@@ -4,12 +4,14 @@ const exphbs = require("express-handlebars")
 
 const app = express()
 
+app.use(express.urlencoded({ extended: false }))
+app.use(express.json())
+
 app.engine("handlebars", exphbs())
 app.set("view engine", "handlebars")
 
-app.get("/", (req, res) => {
-  res.render("home")
-})
+const indexRouter = require("./routes/index")
+app.use("/", indexRouter)
 
 const PORT = process.env.PORT || 3000
 app.listen(PORT, () => {
