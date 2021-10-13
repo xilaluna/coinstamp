@@ -5,10 +5,6 @@ router.get("/", (req, res) => {
   res.render("home")
 })
 
-router.get("/cart", (req, res) => {
-  res.render("cart")
-})
-
 router.get("/login", (req, res) => {
   res.render("login")
 })
