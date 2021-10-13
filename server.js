@@ -1,6 +1,7 @@
 require("dotenv").config()
 const express = require("express")
 const exphbs = require("express-handlebars")
+const mongoose = require("mongoose")
 
 const app = express()
 
