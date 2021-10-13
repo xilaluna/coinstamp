@@ -1,1 +1,190 @@
-<h1>Home</h1>
+<div class="container overflow-hidden">
+  <div class="row g-4 justify-content-center">
+    <div class="col-lg-8">
+      <div class="card">
+        <h4 class="card-header">Carrier Information</h4>
+        <div class="card-body">
+          <div class="row g-3">
+            <div class="col-6">
+              <label for="carrierInput" class="form-label">Carrier</label>
+              <select id="carrierInput" class="form-select">
+                <option selected>USPS</option>
+                <option value="UPS">UPS</option>
+                <option value="DHL">DHL</option>
+              </select>
+            </div>
+            <div class="col-6">
+              <label for="serviceInput" class="form-label">Service</label>
+              <select id="serviceInput" class="form-select">
+                <option selected>Priority Mail</option>
+                <option value="priorityMailExpress">Priority Mail Express</option>
+                <option value="firstClassMail">First Class Mail</option>
+              </select>
+            </div>
+            <div class="col-12">
+              <label for="packageTypeInput" class="form-label">Package Type</label>
+              <select id="packageTypeInput" class="form-select">
+                <option value="Flat" selected>Flat</option>
+                <option value="FlatRateEnvelope">Flat Rate Envelope</option>
+                <option value="Parcel">Parcel</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-8">
+      <div class="card">
+        <h4 class="card-header">Dimensions & Weight</h4>
+        <div class="card-body">
+          <div class="row g-3">
+            <div class="col-4">
+              <label for="lengthInput" class="form-label">Length</label>
+              <input type="text" class="form-control" id="lengthInput" placeholder="length" />
+            </div>
+            <div class="col-4">
+              <label for="widthInput" class="form-label">Width</label>
+              <input type="text" class="form-control" id="widthInput" placeholder="width" />
+            </div>
+            <div class="col-4">
+              <label for="heightInput" class="form-label">Height</label>
+              <input type="text" class="form-control" id="heightInput" placeholder="height" />
+            </div>
+            <div class="col-6">
+              <label for="poundsInput" class="form-label">Pounds(lb)</label>
+              <input type="text" class="form-control" id="poundsInput" placeholder="lb" />
+            </div>
+            <div class="col-6">
+              <label for="ouncesInput" class="form-label">Ounces(oz)</label>
+              <input type="text" class="form-control" id="ouncesInput" placeholder="oz" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="w-100 m-0"></div>
+    <div class="col-lg-4">
+      <div class="card">
+        <h4 class="card-header">From</h4>
+        <div class="card-body">
+          <form class="row g-3">
+            <div class="col-12">
+              <label for="fromInputName" class="form-label">Name</label>
+              <input type="text" class="form-control" id="fromInputName" placeholder="John Doe" />
+            </div>
+            <div class="col-12">
+              <label for="fromInputAddress" class="form-label">Address</label>
+              <input
+                type="text"
+                class="form-control"
+                id="fromInputAddress"
+                placeholder="1234 Main St"
+              />
+            </div>
+            <div class="col-12">
+              <label for="fromInputAptSuite" class="form-label">Apt/Suite</label>
+              <input
+                type="text"
+                class="form-control"
+                id="fromInputAptSuite"
+                placeholder="Apartment, studio, or floor"
+              />
+            </div>
+            <div class="col-md-6">
+              <label for="fromInputCity" class="form-label">City</label>
+              <input type="text" class="form-control" id="fromInputCity" />
+            </div>
+            <div class="col-md-3">
+              <label for="fromInputState" class="form-label">State</label>
+              <select id="fromInputState" class="form-select">
+                <option selected>Choose...</option>
+                <option>...</option>
+              </select>
+            </div>
+            <div class="col-md-3">
+              <label for="fromInputZip" class="form-label">Zip</label>
+              <input type="text" class="form-control" id="fromInputZip" />
+            </div>
+            <div class="col-12">
+              <label for="fromInputPhone" class="form-label">Phone</label>
+              <input
+                type="tel"
+                class="form-control"
+                id="fromInputPhone"
+                placeholder="123-456-7890"
+              />
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-4">
+      <div class="card">
+        <h4 class="card-header">To</h4>
+        <div class="card-body">
+          <form class="row g-3">
+            <div class="col-12">
+              <label for="toInputName" class="form-label">Name</label>
+              <input type="text" class="form-control" id="toInputName" placeholder="John Doe" />
+            </div>
+            <div class="col-12">
+              <label for="toInputAddress" class="form-label">Address</label>
+              <input
+                type="text"
+                class="form-control"
+                id="toInputAddress"
+                placeholder="1234 Main St"
+              />
+            </div>
+            <div class="col-12">
+              <label for="toInputAptSuite" class="form-label">Apt/Suite</label>
+              <input
+                type="text"
+                class="form-control"
+                id="toInputAptSuite"
+                placeholder="Apartment, studio, or floor"
+              />
+            </div>
+            <div class="col-md-6">
+              <label for="toInputCity" class="form-label">City</label>
+              <input type="text" class="form-control" id="toInputCity" />
+            </div>
+            <div class="col-md-3">
+              <label for="toInputState" class="form-label">State</label>
+              <select id="toInputState" class="form-select">
+                <option selected>Choose...</option>
+                <option>...</option>
+              </select>
+            </div>
+            <div class="col-md-3">
+              <label for="toInputZip" class="form-label">Zip</label>
+              <input type="text" class="form-control" id="toInputZip" />
+            </div>
+            <div class="col-12">
+              <label for="toInputPhone" class="form-label">Phone</label>
+              <input type="tel" class="form-control" id="toInputPhone" placeholder="123-456-7890" />
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-8">
+      <div class="card">
+        <div class="card-body">
+          <div class="row justify-content-between">
+            <div class="col-auto">
+              <select id="signatureInput" class="form-select">
+                <option value="noSignatureRequired" selected>No Signature Required</option>
+                <option value="signatureRequired">Signature Required</option>
+                <option value="signatureRequiredByAdult">Signature Required by Adult</option>
+              </select>
+            </div>
+            <div class="col-auto ps-0">
+              <button type="submit" class="float-end btn btn-primary">Calculate Rates</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

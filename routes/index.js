@@ -13,8 +13,4 @@ router.get("/register", (req, res) => {
   res.render("register")
 })
 
-router.get("/cart", (req, res) => {
-  res.render("cart")
-})
-
 module.exports = router

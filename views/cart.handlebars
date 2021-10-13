@@ -1,1 +1,73 @@
-<h1>Cart</h1>
+<div class="container overflow-hidden">
+  <div class="row g-4 justify-content-center">
+    <div class="col-lg-7">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Cart</h5>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">
+              <div class="row">
+                <div class="col-9">
+                  <p id="labelName" class="card-text">USPS Priority (From Jhon doe To John doe)</p>
+                </div>
+                <div class="col-2">
+                  <p id="labelPrice" class="card-text">$8.00</p>
+                </div>
+                <div class="col-1">
+                  <a href="/cart/:id/remove">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="16"
+                      height="16"
+                      fill="currentColor"
+                      class="bi bi-x"
+                      viewBox="0 0 16 16"
+                    >
+                      <path
+                        d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"
+                      ></path>
+                    </svg>
+                  </a>
+                </div>
+              </div>
+            </li>
+            <li class="list-group-item">A second item</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-3">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Cart Summary</h5>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">
+              <div class="row justify-content-between">
+                <div class="col-auto">
+                  <h6>Subtotal</h6>
+                </div>
+                <div class="col-auto float-end">
+                  <h6>$0.00</h6>
+                </div>
+              </div>
+            </li>
+            <li class="list-group-item">
+              <div class="row justify-content-between">
+                <div class="col-auto">
+                  <h6>Total</h6>
+                </div>
+                <div class="col-auto float-end">
+                  <h6>$0.00</h6>
+                </div>
+                <div class="w-100 m-0"></div>
+                <div class="col-12 mt-3">
+                  <button type="submit" class="btn btn-primary col-12">Checkout</button>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
