@@ -24,7 +24,7 @@ const postRegister = async (req, res) => {
     const token = jwt.sign({ _id: user._id }, process.env.TOKEN_SECRET, {
       expiresIn: "60 days",
     })
-    res.header("nToken", token)
+    res.cookie("nToken", token, { maxAge: 900000, httpOnly: true })
     res.redirect("/")
   } catch (err) {
     console.log(err.message)
@@ -46,7 +46,7 @@ const postLogin = async (req, res) => {
     const token = jwt.sign({ _id: user._id }, process.env.TOKEN_SECRET, {
       expiresIn: "60 days",
     })
-    res.header("nToken", token)
+    res.cookie("nToken", token, { maxAge: 900000, httpOnly: true })
     res.redirect("/")
   } catch (err) {
     console.log(err.message)
@@ -55,6 +55,7 @@ const postLogin = async (req, res) => {
 }
 
 const getLogout = async (req, res) => {
+  res.clearCookie("nToken")
   res.redirect("/")
 }
 

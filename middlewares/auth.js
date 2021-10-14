@@ -1,12 +1,15 @@
 const jwt = require("jsonwebtoken")
 
 const auth = async (req, res, next) => {
-  const token = req.header("nToken")
-  if (!token) return res.status(401).send("Access Denied")
-
   try {
-    const verified = jwt.verify(token, process.env.TOKEN_SECRET)
-    req.user = verified
+    const token = req.cookies.nToken
+
+    if (token === "undefined" || token === null) {
+      req.user = null
+    } else {
+      const verified = jwt.decode(token, { complete: true }) || {}
+      req.user = verified.payload
+    }
     next()
   } catch (err) {
     res.status(400).send(err)
