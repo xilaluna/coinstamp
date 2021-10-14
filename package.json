@@ -19,9 +19,14 @@
   },
   "homepage": "https://github.com/xiluna/CryptoStamps#readme",
   "dependencies": {
+    "@easypost/api": "^4.0.0",
+    "bcryptjs": "^2.4.3",
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
-    "express-handlebars": "^5.3.4"
+    "express-handlebars": "^5.3.4",
+    "joi": "^17.4.2",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^6.0.10"
   },
   "devDependencies": {
     "nodemon": "^2.0.13"
