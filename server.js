@@ -17,11 +17,13 @@ app.set("view engine", "handlebars")
 
 const indexRouter = require("./routes/index")
 const authRouter = require("./routes/auth")
+const stampRouter = require("./routes/stamp")
 const cartRouter = require("./routes/cart")
 const connectDatabase = require("./config/db")
 
 app.use("/", indexRouter)
 app.use("/", authRouter)
+app.use("/stamp", stampRouter)
 app.use("/cart", cartRouter)
 connectDatabase()
 

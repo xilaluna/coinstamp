@@ -3,17 +3,6 @@ const api = new Easypost(process.env.EASYPOST_TEST_KEY)
 
 const postStamp = async (req, res) => {
   try {
-    const fromAddress = new api.Address({
-      name: req.body.fromName,
-      street1: req.body.fromStreet1,
-      street2: req.body.fromStreet2,
-      city: req.body.fromCity,
-      state: req.body.fromState,
-      zip: req.body.fromZip,
-      phone: req.body.fromPhone,
-    })
-    const fromAddress = await fromAddress.save()
-
     const toAddress = new api.Address({
       name: req.body.toName,
       street1: req.body.toStreet1,
@@ -23,7 +12,18 @@ const postStamp = async (req, res) => {
       zip: req.body.toZip,
       phone: req.body.toPhone,
     })
-    const toAddress = await toAddress.save()
+    const savedToAddress = await toAddress.save()
+
+    const fromAddress = new api.Address({
+      name: req.body.fromName,
+      street1: req.body.fromStreet1,
+      street2: req.body.fromStreet2,
+      city: req.body.fromCity,
+      state: req.body.fromState,
+      zip: req.body.fromZip,
+      phone: req.body.fromPhone,
+    })
+    const savedFromAddress = await fromAddress.save()
 
     const parcel = new api.Parcel({
       length: req.body.length,
@@ -33,16 +33,16 @@ const postStamp = async (req, res) => {
       weight: 10,
     })
 
-    const parcel = await parcel.save()
+    const savedParcel = await parcel.save()
 
     const shipment = new api.Shipment({
-      to_address: toAddress,
-      from_address: fromAddress,
-      parcel: parcel,
+      to_address: savedToAddress,
+      from_address: savedFromAddress,
+      parcel: savedParcel,
     })
 
-    const shipment = await shipment.save()
-    console.log(shipment)
+    const savedShipment = await shipment.save()
+    console.log(savedShipment)
   } catch (error) {
     console.log(error)
   }
