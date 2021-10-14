@@ -1,4 +1,5 @@
 const User = require("../models/User")
+const bcrypt = require("bcryptjs")
 const jwt = require("jsonwebtoken")
 const { registerValidation, loginValidation } = require("../validations/auth")
 
@@ -19,6 +20,11 @@ const postRegister = async (req, res) => {
     })
 
     await user.save()
+
+    const token = jwt.sign({ _id: user._id }, process.env.TOKEN_SECRET, {
+      expiresIn: "60 days",
+    })
+    res.header("nToken", token)
     res.redirect("/")
   } catch (err) {
     console.log(err.message)
@@ -40,9 +46,9 @@ const postLogin = async (req, res) => {
     const token = jwt.sign({ _id: user._id }, process.env.TOKEN_SECRET, {
       expiresIn: "60 days",
     })
-    res.json({ token })
+    res.header("nToken", token)
     res.redirect("/")
-  } catch (error) {
+  } catch (err) {
     console.log(err.message)
     res.status(400).send(err)
   }

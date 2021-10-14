@@ -12,11 +12,13 @@ app.use(express.json())
 app.engine("handlebars", exphbs())
 app.set("view engine", "handlebars")
 
+const checkAuth = require("./middlewares/auth")
 const indexRouter = require("./routes/index")
 const authRouter = require("./routes/auth")
 const cartRouter = require("./routes/cart")
 const connectDatabase = require("./config/db")
 
+app.use(checkAuth)
 app.use("/", indexRouter)
 app.use("/", authRouter)
 app.use("/cart", cartRouter)
