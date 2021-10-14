@@ -1,24 +1,25 @@
 require("dotenv").config()
 const express = require("express")
+const cookieParser = require("cookie-parser")
 const exphbs = require("express-handlebars")
 
 const app = express()
 
-app.use(express.static("public"))
+app.use(cookieParser())
 
 app.use(express.urlencoded({ extended: false }))
 app.use(express.json())
 
+app.use(express.static("public"))
+
 app.engine("handlebars", exphbs())
 app.set("view engine", "handlebars")
 
-const checkAuth = require("./middlewares/auth")
 const indexRouter = require("./routes/index")
 const authRouter = require("./routes/auth")
 const cartRouter = require("./routes/cart")
 const connectDatabase = require("./config/db")
 
-app.use(checkAuth)
 app.use("/", indexRouter)
 app.use("/", authRouter)
 app.use("/cart", cartRouter)
