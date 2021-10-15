@@ -3,6 +3,7 @@ const router = express.Router()
 const stamp = require("../controllers/stamp")
 
 router.post("/", stamp.postStamp)
-router.post("/:id/checkout", stamp.buyStamp)
+router.get("/checkout", stamp.checkoutStamp)
+router.get("/order", stamp.checkoutStamp)
 
 module.exports = router

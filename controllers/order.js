@@ -1,11 +1,11 @@
-const getCart = async (req, res) => {
+const getOrder = async (req, res) => {
   try {
-    res.render("cart")
+    res.render("order")
   } catch (error) {
     console.log(error)
   }
 }
 
 module.exports = {
-  getCart,
+  getOrder,
 }
