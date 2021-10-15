@@ -1,6 +1,9 @@
 const Easypost = require("@easypost/api")
 const api = new Easypost(process.env.EASYPOST_TEST_KEY)
 
+const { Client, resources, Webhook } = require("coinbase-commerce-node")
+Client.init(process.env.COINBASE_KEY)
+
 const postStamp = async (req, res) => {
   try {
     const carrierInfo = {
@@ -70,12 +73,54 @@ const postStamp = async (req, res) => {
   }
 }
 
-const buyStamp = async (req, res) => {
+const checkoutStamp = async (req, res) => {
   try {
-  } catch (error) {}
+    const { Charge } = resources
+    const chargeData = {
+      name: "Stamp",
+      description: "Postage Stamp",
+      local_price: {
+        amount: 9.99,
+        currency: "USD",
+      },
+      pricing_type: "fixed_price",
+      metadata: {
+        user: "johndoe",
+      },
+    }
+
+    const charge = await Charge.create(chargeData)
+    console.log(charge)
+    res.redirect(charge.hosted_url)
+    // shipment.buy(shipment.lowestRate(["USPS"], ["First"])).then(console.log)
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+const processStamp = async (req, res) => {
+  const rawbody = req.rawBody
+  const signature = req.headers["x-cc-webhook-signature"]
+  const webhookSecret = process.env.WEBHOOK_SECRET
+  try {
+    const event = Webhook.verifyEventBody(rawbody, signature, webhookSecret)
+
+    if (event.type === "charge:confirmed") {
+      const shipment = await api.Shipment.retrieve()
+      await shipment.buy(s)
+    }
+
+    if (event.type === "charge:failed") {
+    }
+
+    res.send(`webhook recieved ${event.id}`)
+  } catch (error) {
+    console.log(error)
+  }
 }
 
 module.exports = {
   postStamp,
-  buyStamp,
+  checkoutStamp,
+  processStamp,
 }
