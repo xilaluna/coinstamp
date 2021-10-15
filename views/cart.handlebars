@@ -2,23 +2,30 @@
   <div class="row g-4 justify-content-center">
     <div class="col-lg-7">
       <div class="card">
+        <h5 class="card-header">Cart</h5>
         <div class="card-body">
-          <h5 class="card-title">Cart</h5>
           <ul class="list-group list-group-flush">
             <li class="list-group-item">
               <div class="row">
-                <div class="col-9">
-                  <p id="labelName" class="card-text">USPS Priority (From Jhon doe To John doe)</p>
+                <div class="col-auto">
+                  <p id="labelName" class="card-text">
+                    {{carrierInfo.carrier}}
+                    {{carrierInfo.service}}
+                    (From
+                    {{savedShipment.to_address.name}}
+                    | To
+                    {{savedShipment.from_address.name}})
+                  </p>
                 </div>
-                <div class="col-2">
-                  <p id="labelPrice" class="card-text">$8.00</p>
+                <div class="col-auto">
+                  <p id="labelPrice" class="card-text">${{rateInfo.rate}}</p>
                 </div>
-                <div class="col-1">
+                <div class="col-auto">
                   <a href="/cart/:id/remove">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
-                      width="16"
-                      height="16"
+                      width="20"
+                      height="20"
                       fill="currentColor"
                       class="bi bi-x"
                       viewBox="0 0 16 16"
@@ -31,15 +38,14 @@
                 </div>
               </div>
             </li>
-            <li class="list-group-item">A second item</li>
           </ul>
         </div>
       </div>
     </div>
     <div class="col-lg-3">
       <div class="card">
+        <h5 class="card-header">Cart Summary</h5>
         <div class="card-body">
-          <h5 class="card-title">Cart Summary</h5>
           <ul class="list-group list-group-flush">
             <li class="list-group-item">
               <div class="row justify-content-between">

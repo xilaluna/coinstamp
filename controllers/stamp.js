@@ -57,10 +57,14 @@ const postStamp = async (req, res) => {
     })
     const savedShipment = await shipment.save()
 
+    const rateInfo = {
+      rate: savedShipment.rates[0].rate,
+    }
+
     console.log(savedShipment)
     console.log(carrierInfo)
 
-    res.redirect("/cart")
+    res.render("cart", { savedShipment, carrierInfo, rateInfo })
   } catch (error) {
     console.log(error)
   }
