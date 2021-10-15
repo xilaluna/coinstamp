@@ -74,8 +74,9 @@ const postStamp = async (req, res) => {
 }
 
 const checkoutStamp = async (req, res) => {
+  const { Charge } = resources
+
   try {
-    const { Charge } = resources
     const chargeData = {
       name: "Stamp",
       description: "Postage Stamp",
@@ -102,15 +103,20 @@ const processStamp = async (req, res) => {
   const rawbody = req.rawBody
   const signature = req.headers["x-cc-webhook-signature"]
   const webhookSecret = process.env.WEBHOOK_SECRET
+
   try {
     const event = Webhook.verifyEventBody(rawbody, signature, webhookSecret)
 
     if (event.type === "charge:confirmed") {
+      const orderStatus = "confirmed"
       const shipment = await api.Shipment.retrieve()
       await shipment.buy(s)
+      res.render("order")
     }
 
     if (event.type === "charge:failed") {
+      const orderStatus = "failed"
+      res.render("order", { orderStatus })
     }
 
     res.send(`webhook recieved ${event.id}`)

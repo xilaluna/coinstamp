@@ -19,12 +19,14 @@ const indexRouter = require("./routes/index")
 const authRouter = require("./routes/auth")
 const stampRouter = require("./routes/stamp")
 const cartRouter = require("./routes/cart")
+const orderRouter = require("./routes/order")
 const connectDatabase = require("./config/db")
 
 app.use("/", indexRouter)
 app.use("/", authRouter)
 app.use("/stamp", stampRouter)
 app.use("/cart", cartRouter)
+app.use("/order", orderRouter)
 connectDatabase()
 
 const PORT = process.env.PORT || 3000
