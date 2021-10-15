@@ -81,7 +81,7 @@ const checkoutStamp = async (req, res) => {
       name: "Stamp",
       description: "Postage Stamp",
       local_price: {
-        amount: 9.99,
+        amount: 1.99,
         currency: "USD",
       },
       pricing_type: "fixed_price",
