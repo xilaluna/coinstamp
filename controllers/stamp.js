@@ -12,7 +12,7 @@ const postStamp = async (req, res) => {
     }
 
     const toAddress = new api.Address({
-      verify: ["true"],
+      verify: [true],
       name: req.body.toName,
       street1: req.body.toStreet1,
       street2: req.body.toStreet2,
@@ -25,7 +25,7 @@ const postStamp = async (req, res) => {
     const savedToAddress = await toAddress.save()
 
     const fromAddress = new api.Address({
-      verify: ["true"],
+      verify: [true],
       name: req.body.fromName,
       street1: req.body.fromStreet1,
       street2: req.body.fromStreet2,
@@ -64,7 +64,7 @@ const postStamp = async (req, res) => {
       rate: savedShipment.rates[0].rate,
     }
 
-    console.log(savedShipment)
+    // console.log(savedShipment)
     console.log(carrierInfo)
 
     res.render("cart", { savedShipment, carrierInfo, rateInfo })
