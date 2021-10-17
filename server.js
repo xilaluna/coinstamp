@@ -1,24 +1,25 @@
 require("dotenv").config()
 const express = require("express")
-const cookieParser = require("cookie-parser")
 const session = require("express-session")
+const MongoStore = require("connect-mongo")
 const exphbs = require("express-handlebars")
 
 const app = express()
-
-app.use(cookieParser())
 
 app.use(express.urlencoded({ extended: false }))
 app.use(express.json())
 app.use(
   session({
-    secret: "secret",
+    secret: process.env.SESSION_SECRET,
     resave: false,
     saveUninitialized: false,
+    store: MongoStore.create({
+      mongoUrl: process.env.MONGODB_CONNECTION_STRING,
+    }),
+    cookie: { maxAge: 1000 * 60 * 60 * 24 },
   })
 )
 app.use(express.static("public"))
-
 app.engine("handlebars", exphbs())
 app.set("view engine", "handlebars")
 
