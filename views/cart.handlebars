@@ -1,43 +1,47 @@
 <div class="container overflow-hidden">
   <div class="row g-4 justify-content-center">
-    <div class="col-lg-7">
+    <div class="col-lg-8">
       <div class="card">
         <h5 class="card-header">Cart</h5>
         <div class="card-body">
           <ul class="list-group list-group-flush">
-            <li class="list-group-item">
-              <div class="row">
-                <div class="col-auto">
-                  <p id="labelName" class="card-text">
-                    {{carrierInfo.carrier}}
-                    {{carrierInfo.service}}
-                    (From
-                    {{savedShipment.to_address.name}}
-                    | To
-                    {{savedShipment.from_address.name}})
-                  </p>
+            {{#each stamps}}
+              <li class="list-group-item">
+                <div class="row">
+                  <div class="col-auto">
+                    <p id="stampName" class="card-text">
+                      {{carrierInfo.carrier}}
+                      {{carrierInfo.service}}
+                      (From
+                      {{savedShipment.from_address.name}}
+                      | To
+                      {{savedShipment.to_address.name}})
+                    </p>
+                  </div>
+                  <div class="col-auto">
+                    <p id="stampPrice" class="card-text">${{rateInfo.rate}}</p>
+                  </div>
+                  <div class="col-auto">
+                    <a href="/cart/:id/remove">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="20"
+                        height="20"
+                        fill="currentColor"
+                        class="bi bi-x"
+                        viewBox="0 0 16 16"
+                      >
+                        <path
+                          d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"
+                        ></path>
+                      </svg>
+                    </a>
+                  </div>
                 </div>
-                <div class="col-auto">
-                  <p id="labelPrice" class="card-text">${{rateInfo.rate}}</p>
-                </div>
-                <div class="col-auto">
-                  <a href="/cart/:id/remove">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="20"
-                      height="20"
-                      fill="currentColor"
-                      class="bi bi-x"
-                      viewBox="0 0 16 16"
-                    >
-                      <path
-                        d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"
-                      ></path>
-                    </svg>
-                  </a>
-                </div>
-              </div>
-            </li>
+              </li>
+            {{else}}
+              <li class="list-group-item">No stamps in cart</li>
+            {{/each}}
           </ul>
         </div>
       </div>
@@ -53,7 +57,7 @@
                   <h6>Subtotal</h6>
                 </div>
                 <div class="col-auto float-end">
-                  <h6>$0.00</h6>
+                  <h6>{{rateInfo.rate}}</h6>
                 </div>
               </div>
             </li>
@@ -63,7 +67,7 @@
                   <h6>Total</h6>
                 </div>
                 <div class="col-auto float-end">
-                  <h6>$0.00</h6>
+                  <h6>{{rateInfo.rate}}</h6>
                 </div>
                 <div class="w-100 m-0"></div>
                 <div class="col-12 mt-3">
