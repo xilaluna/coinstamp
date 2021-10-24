@@ -84,19 +84,18 @@ const checkoutStamp = async (req, res) => {
       name: "Postage",
       description: "Postage Order",
       local_price: {
-        amount: 1.99,
+        amount: req.session.stamps[0].rateInfo.rate,
         currency: "USD",
       },
       pricing_type: "fixed_price",
       metadata: {
-        user: "johndoe",
+        user: "john",
       },
     }
 
     const charge = await Charge.create(chargeData)
-    console.log(charge)
     res.redirect(charge.hosted_url)
-    // shipment.buy(shipment.lowestRate(["USPS"], ["First"])).then(console.log)
+    res.send("No stamps in cart")
   } catch (error) {
     console.log(error)
   }
