@@ -40,6 +40,7 @@ const postStamp = async (req, res) => {
     })
     const savedShipment = await shipment.save()
 
+    console.log(savedShipment.rates)
     // initialize rateInfo & get price based on user data
     let rateInfo = {}
     for (let i = 0; i < savedShipment.rates.length; i++) {
@@ -79,6 +80,7 @@ const postStamp = async (req, res) => {
 const checkoutStamp = async (req, res) => {
   const { Charge } = resources
 
+  console.log(req.session.stamps)
   try {
     const chargeData = {
       name: "Postage",

@@ -1,5 +1,5 @@
 <div class="container overflow-hidden">
-  <form action="/stamp" method="post">
+  <form action="/stamp" method="post" class="needs-validation" novalidate>
     <div class="row g-4 justify-content-center">
       <div class="col-lg-8">
         <div class="card">
@@ -8,31 +8,45 @@
             <div class="row g-3">
               <div class="col-6">
                 <label for="carrier" class="form-label">Carrier</label>
-                <select id="carrier" class="form-select" name="carrier">
-                  <option selected>Select Carrier</option>
+                <select id="carrier" class="form-select" name="carrier" required>
+                  <option selected disabled value="">Select Carrier</option>
                   <option value="USPS">USPS</option>
                   <option value="UPS">UPS</option>
                   <option value="DHL">DHL</option>
                 </select>
+                <div class="invalid-feedback">
+                  Please choose a carrier.
+                </div>
               </div>
               <div class="col-6">
                 <label for="service" class="form-label">Service</label>
-                <select id="service" class="form-select" name="service">
-                  <option selected>Select Service</option>
+                <select id="service" class="form-select" name="service" required>
+                  <option selected disabled value="">Select Service</option>
                   <option value="First">First</option>
                   <option value="Priority">Priority Mail</option>
                   <option value="Express">Express</option>
                   <option value="ParcelSelect">Parcel Select</option>
                 </select>
+                <div class="invalid-feedback">
+                  Please choose a service.
+                </div>
               </div>
               <div class="col-12">
                 <label for="predefined_package" class="form-label">Package Type</label>
-                <select id="predefined_package" class="form-select" name="predefined_package">
-                  <option selected>Select Package</option>
+                <select
+                  id="predefined_package"
+                  class="form-select"
+                  name="predefined_package"
+                  required
+                >
+                  <option selected disabled value="">Select Package</option>
                   <option value="Card" selected>Card</option>
                   <option value="Letter">Letter</option>
                   <option value="Flat">Flat</option>
                 </select>
+                <div class="invalid-feedback">
+                  Please choose a package type.
+                </div>
               </div>
             </div>
           </div>
@@ -93,7 +107,16 @@
             <div class="row g-3">
               <div class="col-12">
                 <label for="fromCountry" class="form-label">Country</label>
-                <input type="text" class="form-control" id="fromCountry" name="fromCountry" />
+                <input
+                  type="text"
+                  class="form-control"
+                  id="fromCountry"
+                  name="fromCountry"
+                  required
+                />
+                <div class="invalid-feedback">
+                  Please provide a country.
+                </div>
               </div>
               <div class="col-12">
                 <label for="fromName" class="form-label">Name</label>
@@ -103,7 +126,11 @@
                   id="fromName"
                   name="fromName"
                   placeholder="John Doe"
+                  required
                 />
+                <div class="invalid-feedback">
+                  Please provide a name.
+                </div>
               </div>
               <div class="col-12">
                 <label for="fromStreet1" class="form-label">Address</label>
@@ -113,7 +140,11 @@
                   id="fromStreet1"
                   name="fromStreet1"
                   placeholder="1234 Main St"
+                  required
                 />
+                <div class="invalid-feedback">
+                  Please provide an address.
+                </div>
               </div>
               <div class="col-12">
                 <label for="fromStreet2" class="form-label">Apt/Suite</label>
@@ -125,27 +156,30 @@
                   placeholder="Apartment, studio, or floor"
                 />
               </div>
-              <div class="col-md-6">
+              <div class="col-md-12">
                 <label for="fromCity" class="form-label">City</label>
-                <input type="text" class="form-control" id="fromCity" name="fromCity" />
+                <input type="text" class="form-control" id="fromCity" name="fromCity" required />
+                <div class="invalid-feedback">
+                  Please provide a city.
+                </div>
               </div>
-              <div class="col-md-3">
+              <div class="col-md-6">
                 <label for="fromState" class="form-label">State</label>
-                <input type="text" class="form-control" id="fromState" name="fromState" />
+                <input type="text" class="form-control" id="fromState" name="fromState" required />
+                <div class="invalid-feedback">
+                  Please provide a state.
+                </div>
               </div>
-              <div class="col-md-3">
+              <div class="col-md-6">
                 <label for="fromZip" class="form-label">Zip</label>
-                <input type="text" class="form-control" id="fromZip" name="fromZip" />
+                <input type="text" class="form-control" id="fromZip" name="fromZip" required />
+                <div class="invalid-feedback">
+                  Please provide a zip.
+                </div>
               </div>
               <div class="col-12">
                 <label for="fromPhone" class="form-label">Phone</label>
-                <input
-                  type="tel"
-                  class="form-control"
-                  id="fromPhone"
-                  name="fromPhone"
-                  placeholder="123-456-7890"
-                />
+                <input type="tel" class="form-control" id="fromPhone" name="fromPhone" />
               </div>
             </div>
           </div>
@@ -158,7 +192,10 @@
             <div class="row g-3">
               <div class="col-12">
                 <label for="toCountry" class="form-label">Country</label>
-                <input type="text" class="form-control" id="toCountry" name="toCountry" />
+                <input type="text" class="form-control" id="toCountry" name="toCountry" required />
+                <div class="invalid-feedback">
+                  Please provide a country.
+                </div>
               </div>
               <div class="col-12">
                 <label for="toName" class="form-label">Name</label>
@@ -168,7 +205,11 @@
                   id="toName"
                   name="toName"
                   placeholder="John Doe"
+                  required
                 />
+                <div class="invalid-feedback">
+                  Please provide a name.
+                </div>
               </div>
               <div class="col-12">
                 <label for="toStreet1" class="form-label">Address</label>
@@ -178,7 +219,11 @@
                   id="toStreet1"
                   name="toStreet1"
                   placeholder="1234 Main St"
+                  required
                 />
+                <div class="invalid-feedback">
+                  Please provide an address.
+                </div>
               </div>
               <div class="col-12">
                 <label for="toStreet2" class="form-label">Apt/Suite</label>
@@ -190,27 +235,30 @@
                   name="toStreet2"
                 />
               </div>
-              <div class="col-md-6">
+              <div class="col-md-12">
                 <label for="toCity" class="form-label">City</label>
-                <input type="text" class="form-control" id="toCity" name="toCity" />
+                <input type="text" class="form-control" id="toCity" name="toCity" required />
+                <div class="invalid-feedback">
+                  Please provide a city.
+                </div>
               </div>
-              <div class="col-md-3">
+              <div class="col-md-6">
                 <label for="toState" class="form-label">State</label>
-                <input type="text" class="form-control" id="toState" name="toState" />
+                <input type="text" class="form-control" id="toState" name="toState" required />
+                <div class="invalid-feedback">
+                  Please provide a state.
+                </div>
               </div>
-              <div class="col-md-3">
+              <div class="col-md-6">
                 <label for="toZip" class="form-label">Zip</label>
-                <input type="text" class="form-control" id="toZip" name="toZip" />
+                <input type="text" class="form-control" id="toZip" name="toZip" required />
+                <div class="invalid-feedback">
+                  Please provide a zip.
+                </div>
               </div>
               <div class="col-12">
                 <label for="toPhone" class="form-label">Phone</label>
-                <input
-                  type="tel"
-                  class="form-control"
-                  id="toPhone"
-                  name="toPhone"
-                  placeholder="123-456-7890"
-                />
+                <input type="tel" class="form-control" id="toPhone" name="toPhone" />
               </div>
             </div>
           </div>

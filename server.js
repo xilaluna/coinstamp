@@ -17,7 +17,6 @@ app.use(
       mongoUrl: process.env.MONGODB_CONNECTION_STRING,
     }),
     cookie: {
-      maxAge: 1000 * 60 * 5,
       httpOnly: true,
     },
   })
