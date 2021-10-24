@@ -66,7 +66,6 @@ const postStamp = async (req, res) => {
     }
 
     req.session.stamps.push(stamp)
-    req.session.save()
 
     // render cart page with stamp appended into the req.session.stamp array
     res.render("cart", {
@@ -79,14 +78,12 @@ const postStamp = async (req, res) => {
 
 const checkoutStamp = async (req, res) => {
   const { Charge } = resources
-
-  console.log(req.session.stamps)
   try {
     const chargeData = {
       name: "Postage",
       description: "Postage Order",
       local_price: {
-        amount: req.session.stamps[0].rateInfo.rate,
+        amount: 1,
         currency: "USD",
       },
       pricing_type: "fixed_price",

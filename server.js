@@ -1,6 +1,8 @@
 require("dotenv").config()
 const express = require("express")
 const session = require("express-session")
+const fs = require("fs")
+const https = require("https")
 const MongoStore = require("connect-mongo")
 const exphbs = require("express-handlebars")
 
@@ -17,7 +19,9 @@ app.use(
       mongoUrl: process.env.MONGODB_CONNECTION_STRING,
     }),
     cookie: {
-      httpOnly: true,
+      maxAge: 1000 * 60 * 60,
+      secure: true,
+      sameSite: true,
     },
   })
 )
@@ -35,7 +39,15 @@ app.use("/stamp", stampRouter)
 app.use("/cart", cartRouter)
 app.use("/order", orderRouter)
 
+const server = https.createServer(
+  {
+    key: fs.readFileSync(process.env.SSL_KEY_FILE),
+    cert: fs.readFileSync(process.env.SSL_CERT_FILE),
+  },
+  app
+)
+
 const PORT = process.env.PORT || 3000
-app.listen(PORT, () => {
+server.listen(PORT, () => {
   console.log(`Server listening on port : ${PORT}`)
 })
