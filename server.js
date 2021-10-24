@@ -16,10 +16,13 @@ app.use(
     store: MongoStore.create({
       mongoUrl: process.env.MONGODB_CONNECTION_STRING,
     }),
-    cookie: { maxAge: 1000 * 60 * 60 * 24 },
+    cookie: {
+      maxAge: 1000 * 60 * 5,
+      httpOnly: true,
+    },
   })
 )
-// app.use(express.static("public"))
+app.use(express.static("public"))
 app.engine("handlebars", exphbs())
 app.set("view engine", "handlebars")
 
