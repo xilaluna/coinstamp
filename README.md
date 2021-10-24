@@ -1,5 +1,5 @@
 <div align="center">
-  <h1>CryptoStamps</h1>
+  <h1>CoinStamp</h1>
   <i>A web app that allow users to pay for postage in crypto</i>  
 </div>
 

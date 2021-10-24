@@ -1,5 +1,5 @@
 {
-  "name": "crypto-stamps",
+  "name": "coin-stamp",
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
@@ -10,14 +10,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/xiluna/CryptoStamps.git"
+    "url": "git+https://github.com/xiluna/CoinStamp.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/xiluna/CryptoStamps/issues"
+    "url": "https://github.com/xiluna/CoinStamp/issues"
   },
-  "homepage": "https://github.com/xiluna/CryptoStamps#readme",
+  "homepage": "https://github.com/xiluna/CoinStamp#readme",
   "dependencies": {
     "@easypost/api": "^4.0.0",
     "coinbase-commerce-node": "^1.0.4",
