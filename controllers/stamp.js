@@ -66,11 +66,8 @@ const postStamp = async (req, res) => {
     }
 
     req.session.stamps.push(stamp)
-
     // render cart page with stamp appended into the req.session.stamp array
-    res.render("cart", {
-      stamps: req.session.stamps,
-    })
+    res.render("cart")
   } catch (error) {
     console.log(error)
   }
@@ -94,7 +91,6 @@ const checkoutStamp = async (req, res) => {
 
     const charge = await Charge.create(chargeData)
     res.redirect(charge.hosted_url)
-    res.send("No stamps in cart")
   } catch (error) {
     console.log(error)
   }

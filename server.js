@@ -7,7 +7,6 @@ const MongoStore = require("connect-mongo")
 const exphbs = require("express-handlebars")
 
 const app = express()
-
 app.use(express.urlencoded({ extended: false }))
 app.use(express.json())
 app.use(
@@ -15,16 +14,21 @@ app.use(
     secret: process.env.SESSION_SECRET,
     resave: false,
     saveUninitialized: false,
+    proxy: true,
     store: MongoStore.create({
       mongoUrl: process.env.MONGODB_CONNECTION_STRING,
     }),
     cookie: {
-      maxAge: 1000 * 60 * 60,
+      expires: false,
       secure: true,
       sameSite: true,
     },
   })
 )
+app.use(async (req, res, next) => {
+  res.locals.session = req.session
+  next()
+})
 app.use(express.static("public"))
 app.engine("handlebars", exphbs())
 app.set("view engine", "handlebars")

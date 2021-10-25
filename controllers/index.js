@@ -3,9 +3,7 @@ const getHome = async (req, res) => {
     if (!req.session.stamps) {
       req.session.stamps = []
     }
-
-    req.session.save()
-    res.render("home", { stamps: req.session.stamps })
+    res.render("home")
   } catch (error) {
     console.log(error)
   }

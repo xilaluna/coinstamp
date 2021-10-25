@@ -1,6 +1,6 @@
 const getCart = async (req, res) => {
   try {
-    res.render("cart", { stamps: req.session.stamps })
+    res.render("cart")
   } catch (error) {
     console.log(error)
   }
