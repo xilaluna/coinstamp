@@ -1,7 +1,7 @@
 const express = require("express")
 const router = express.Router()
 
-const order = require("../controllers/order")
+const order = require("../controllers/orderController")
 
 router.get("/", order.getOrder)
 
