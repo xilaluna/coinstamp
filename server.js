@@ -34,14 +34,16 @@ app.engine("handlebars", exphbs())
 app.set("view engine", "handlebars")
 
 const indexRouter = require("./routes/index")
-const stampRouter = require("./routes/stamp")
 const cartRouter = require("./routes/cart")
 const orderRouter = require("./routes/order")
+const ratesRouter = require("./routes/rates")
+const stampRouter = require("./routes/stamp")
 
 app.use("/", indexRouter)
-app.use("/stamp", stampRouter)
 app.use("/cart", cartRouter)
 app.use("/order", orderRouter)
+app.use("/rates", ratesRouter)
+app.use("/stamp", stampRouter)
 
 const server = https.createServer(
   {
