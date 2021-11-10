@@ -1,16 +1,42 @@
 import React from "react"
-import { AppBar, Toolbar, Typography, Button } from "@mui/material"
+import {
+  Box,
+  AppBar,
+  Toolbar,
+  Typography,
+  IconButton,
+  Button,
+  Badge,
+  Container,
+} from "@mui/material"
+import { ShoppingCart } from "@mui/icons-material"
 
 const Navbar = () => {
   return (
-    <AppBar position="static">
-      <Toolbar>
-        <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-          News
-        </Typography>
-        <Button color="inherit">Login</Button>
-      </Toolbar>
-    </AppBar>
+    <Box sx={{ flexGrow: 1 }}>
+      <AppBar position="relative">
+        <Container maxWidth="lg">
+          <Toolbar>
+            <Typography variant="h6">CoinStamp</Typography>
+
+            <Box sx={{ flexGrow: 1 }} />
+
+            <Button color="inherit">New Label</Button>
+            <IconButton
+              size="large"
+              aria-label="account of current user"
+              aria-controls="menu-appbar"
+              aria-haspopup="true"
+              color="inherit"
+            >
+              <Badge badgeContent={0} color="error">
+                <ShoppingCart />
+              </Badge>
+            </IconButton>
+          </Toolbar>
+        </Container>
+      </AppBar>
+    </Box>
   )
 }
 
