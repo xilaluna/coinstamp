@@ -1,5 +1,5 @@
 import React from "react"
-import { InputLabel, Grid, FormControl, Select, MenuItem } from "@mui/material"
+import { InputLabel, Grid, FormControl, Select, MenuItem, TextField } from "@mui/material"
 
 const CarrierForm = () => {
   const [carrier, setCarrier] = React.useState("")
@@ -9,25 +9,40 @@ const CarrierForm = () => {
   }
 
   return (
-    <Grid container spacing={4}>
+    <>
       <Grid item xs={6}>
         <FormControl fullWidth>
-          <InputLabel id="demo-simple-select-label">Carrier</InputLabel>
+          <InputLabel id="carrier-label">Carrier</InputLabel>
           <Select
-            labelId="demo-simple-select-label"
-            id="demo-simple-select"
+            labelId="carrier-label"
+            id="carrier-select"
             value={carrier}
-            autoWidth
-            label="Age"
+            label="Carrier"
             onChange={handleChange}
           >
-            <MenuItem value={10}>USPS</MenuItem>
-            <MenuItem value={20}>UPS</MenuItem>
-            <MenuItem value={30}>DHL</MenuItem>
+            <MenuItem value={10}>Ten</MenuItem>
+            <MenuItem value={20}>Twenty</MenuItem>
+            <MenuItem value={30}>Thirty</MenuItem>
           </Select>
         </FormControl>
       </Grid>
-    </Grid>
+      <Grid item xs={6}>
+        <FormControl fullWidth>
+          <InputLabel id="package-type-label">Package Type</InputLabel>
+          <Select
+            labelId="package-type-label"
+            id="package-type"
+            value={carrier}
+            label="Package Type"
+            onChange={handleChange}
+          >
+            <MenuItem value={10}>Ten</MenuItem>
+            <MenuItem value={20}>Twenty</MenuItem>
+            <MenuItem value={30}>Thirty</MenuItem>
+          </Select>
+        </FormControl>
+      </Grid>
+    </>
   )
 }
 
