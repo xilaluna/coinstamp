@@ -1,6 +1,8 @@
 import React from "react"
 import Navbar from "./components/Navbar/Navbar"
 import Footer from "./components/Footer/Footer"
+import Hero from "./components/Hero/Hero"
+import Form from "./components/Form/Form"
 import { CssBaseline } from "@mui/material"
 import { createTheme, ThemeProvider } from "@mui/material/styles"
 
@@ -11,7 +13,8 @@ const App = () => {
     <ThemeProvider theme={theme}>
       <CssBaseline />
       <Navbar />
-      <main></main>
+      <Hero />
+      <Form />
       <Footer />
     </ThemeProvider>
   )
