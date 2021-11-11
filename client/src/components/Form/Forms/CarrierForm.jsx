@@ -1,32 +1,32 @@
 import React from "react"
-import { Card, Grid, CardMedia, CardContent, Typography, CardActions, Button } from "@mui/material"
+import { InputLabel, Grid, FormControl, Select, MenuItem } from "@mui/material"
 
 const CarrierForm = () => {
+  const [carrier, setCarrier] = React.useState("")
+
+  const handleChange = (event) => {
+    setCarrier(event.target.value)
+  }
+
   return (
-    <Grid item xs={12} sm={6} md={12}>
-      <Card>
-        <CardMedia
-          component="img"
-          sx={{
-            // 16:9
-            pt: "56.25%",
-          }}
-          image="https://source.unsplash.com/random"
-          alt="random"
-        />
-        <CardContent sx={{ flexGrow: 1 }}>
-          <Typography gutterBottom variant="h5" component="h2">
-            Heading
-          </Typography>
-          <Typography>
-            This is a media card. You can use this section to describe the content.
-          </Typography>
-        </CardContent>
-        <CardActions>
-          <Button size="small">View</Button>
-          <Button size="small">Edit</Button>
-        </CardActions>
-      </Card>
+    <Grid container spacing={4}>
+      <Grid item xs={6}>
+        <FormControl fullWidth>
+          <InputLabel id="demo-simple-select-label">Carrier</InputLabel>
+          <Select
+            labelId="demo-simple-select-label"
+            id="demo-simple-select"
+            value={carrier}
+            autoWidth
+            label="Age"
+            onChange={handleChange}
+          >
+            <MenuItem value={10}>USPS</MenuItem>
+            <MenuItem value={20}>UPS</MenuItem>
+            <MenuItem value={30}>DHL</MenuItem>
+          </Select>
+        </FormControl>
+      </Grid>
     </Grid>
   )
 }
