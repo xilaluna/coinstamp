@@ -18,7 +18,7 @@ const Form = () => {
             <AddressForm />
           </Grid>
           <Grid item xs={6}>
-            <FormControl fullWidth>
+            <FormControl size="medium">
               <InputLabel id="signature-label">Signature</InputLabel>
               <Select labelId="signature-label" id="signature-input" label="Signature">
                 <MenuItem value={10}>Ten</MenuItem>

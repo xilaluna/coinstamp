@@ -8,7 +8,7 @@ const Hero = () => {
         CoinStamp
       </Typography>
       <Typography variant="h5" align="center" color="text.secondary" component="p">
-        Abandon traditional methods of payment with Coinstamp! Use decentralized currencies to buy
+        Abandon traditional methods of payment with Coinstamp. Use decentralized currencies to buy
         and print your postage today.
       </Typography>
     </Container>

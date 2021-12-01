@@ -14,7 +14,7 @@ const CarrierForm = () => {
         <FormControl fullWidth>
           <InputLabel id="carrier-label">Carrier</InputLabel>
           <Select
-            labelId="carrier-label"
+          labelId="carrier-label"
             id="carrier-select"
             value={carrier}
             label="Carrier"
