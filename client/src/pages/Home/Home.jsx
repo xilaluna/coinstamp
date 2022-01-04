@@ -1,7 +1,7 @@
 import React from "react"
 import Hero from "../../components/Hero/Hero"
 
-const Landing = () => {
+const Home = () => {
   return (
     <React.Fragment>
       <Hero />
@@ -9,4 +9,4 @@ const Landing = () => {
   )
 }
 
-export default Landing
+export default Home
