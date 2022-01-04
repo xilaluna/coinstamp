@@ -1,5 +1,9 @@
 import React from "react"
-import { InputLabel, Grid, FormControl, Select, MenuItem, TextField } from "@mui/material"
+import FormControl from "@mui/material/FormControl"
+import FormGroup from "@mui/material/FormGroup"
+import FormLabel from "@mui/material/FormLabel"
+
+import { InputLabel, Grid, Select, MenuItem, TextField } from "@mui/material"
 
 const CarrierForm = () => {
   const [carrier, setCarrier] = React.useState("")
@@ -9,25 +13,23 @@ const CarrierForm = () => {
   }
 
   return (
-    <>
-      <Grid item xs={6}>
-        <FormControl fullWidth>
+    <React.Fragment>
+      <FormControl>
+        <FormLabel component="legend">Carrier Information</FormLabel>
+        <FormGroup row>
           <InputLabel id="carrier-label">Carrier</InputLabel>
           <Select
-          labelId="carrier-label"
+            labelId="carrier-label"
             id="carrier-select"
             value={carrier}
             label="Carrier"
             onChange={handleChange}
+            autoWidth
           >
             <MenuItem value={10}>Ten</MenuItem>
             <MenuItem value={20}>Twenty</MenuItem>
             <MenuItem value={30}>Thirty</MenuItem>
           </Select>
-        </FormControl>
-      </Grid>
-      <Grid item xs={6}>
-        <FormControl fullWidth>
           <InputLabel id="package-type-label">Package Type</InputLabel>
           <Select
             labelId="package-type-label"
@@ -40,9 +42,9 @@ const CarrierForm = () => {
             <MenuItem value={20}>Twenty</MenuItem>
             <MenuItem value={30}>Thirty</MenuItem>
           </Select>
-        </FormControl>
-      </Grid>
-    </>
+        </FormGroup>
+      </FormControl>
+    </React.Fragment>
   )
 }
 
