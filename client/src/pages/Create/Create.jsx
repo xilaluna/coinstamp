@@ -1,10 +1,11 @@
 import React from "react"
 import Typography from "@mui/material/Typography"
+import Form from "../../components/Form/Form"
 
 const Create = () => {
   return (
     <React.Fragment>
-      <Typography>Create</Typography>
+      <Form />
     </React.Fragment>
   )
 }

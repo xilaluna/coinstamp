@@ -13,7 +13,7 @@ const Footer = () => {
         py: [3, 6],
       }}
     >
-      <Grid container spacing={0} justifyContent="space-between">
+      <Grid container justifyContent="space-between">
         <Grid item xs={2} align="center">
           <Link href="#" variant="subtitle1" color="text.secondary">
             Home
