@@ -1,22 +1,27 @@
 import React from "react"
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom"
+
 import Navbar from "./components/Navbar/Navbar"
 import Footer from "./components/Footer/Footer"
-import Hero from "./components/Hero/Hero"
-import Form from "./components/Form/Form"
-import { CssBaseline } from "@mui/material"
-import { createTheme, ThemeProvider } from "@mui/material/styles"
+import Container from "@mui/material/Container"
 
-const theme = createTheme()
+import Landing from "./pages/Landing/Landing"
+import Rates from "./pages/Rates/Rates"
+import Cart from "./pages/Cart/Cart"
+import Order from "./pages/Order/Order"
 
 const App = () => {
   return (
-    <ThemeProvider theme={theme}>
-      <CssBaseline />
+    <React.Fragment>
       <Navbar />
-      <Hero />
-      <Form />
+      <Container maxWidth="lg">
+        <Landing />
+        <Rates />
+        <Cart />
+        <Order />
+      </Container>
       <Footer />
-    </ThemeProvider>
+    </React.Fragment>
   )
 }
 

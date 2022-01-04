@@ -14,8 +14,8 @@ import { ShoppingCart } from "@mui/icons-material"
 const Navbar = () => {
   return (
     <AppBar position="relative">
-      <Container maxWidth="md" disableGutters>
-        <Toolbar>
+      <Container maxWidth="lg" disableGutters>
+        <Toolbar disableGutters>
           <Typography variant="h6">CoinStamp</Typography>
 
           <Box sx={{ flexGrow: 1 }} />

@@ -5,7 +5,7 @@ import Copyright from "./Copyright"
 const Footer = () => {
   return (
     <Container
-      maxWidth="md"
+      maxWidth="lg"
       component="footer"
       sx={{
         borderTop: (theme) => `1px solid ${theme.palette.divider}`,
