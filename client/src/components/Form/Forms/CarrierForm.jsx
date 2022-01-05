@@ -1,49 +1,55 @@
 import React from "react"
+import Grid from "@mui/material/Grid"
 import FormControl from "@mui/material/FormControl"
-import FormGroup from "@mui/material/FormGroup"
-import FormLabel from "@mui/material/FormLabel"
-
-import { InputLabel, Grid, Select, MenuItem, TextField } from "@mui/material"
+import InputLabel from "@mui/material/InputLabel"
+import Select from "@mui/material/Select"
+import MenuItem from "@mui/material/MenuItem"
+import Typography from "@mui/material/Typography"
 
 const CarrierForm = () => {
   const [carrier, setCarrier] = React.useState("")
 
-  const handleChange = (event) => {
+  const handleCarrierChange = (event) => {
     setCarrier(event.target.value)
   }
 
   return (
     <React.Fragment>
-      <FormControl>
-        <FormLabel component="legend">Carrier Information</FormLabel>
-        <FormGroup row>
-          <InputLabel id="carrier-label">Carrier</InputLabel>
-          <Select
-            labelId="carrier-label"
-            id="carrier-select"
-            value={carrier}
-            label="Carrier"
-            onChange={handleChange}
-            autoWidth
-          >
-            <MenuItem value={10}>Ten</MenuItem>
-            <MenuItem value={20}>Twenty</MenuItem>
-            <MenuItem value={30}>Thirty</MenuItem>
-          </Select>
-          <InputLabel id="package-type-label">Package Type</InputLabel>
-          <Select
-            labelId="package-type-label"
-            id="package-type"
-            value={carrier}
-            label="Package Type"
-            onChange={handleChange}
-          >
-            <MenuItem value={10}>Ten</MenuItem>
-            <MenuItem value={20}>Twenty</MenuItem>
-            <MenuItem value={30}>Thirty</MenuItem>
-          </Select>
-        </FormGroup>
-      </FormControl>
+      <Typography gutterBottom>Carrier Information</Typography>
+      <Grid container spacing={2}>
+        <Grid item md={6}>
+          <FormControl fullWidth>
+            <InputLabel id="carrier-select-label">Carrier</InputLabel>
+            <Select
+              labelId="carrier-select-label"
+              id="carrier-select"
+              value={carrier}
+              label="Carrier"
+              onChange={handleCarrierChange}
+            >
+              <MenuItem value={10}>Ten</MenuItem>
+              <MenuItem value={20}>Twenty</MenuItem>
+              <MenuItem value={30}>Thirty</MenuItem>
+            </Select>
+          </FormControl>
+        </Grid>
+        <Grid item md={6}>
+          <FormControl fullWidth>
+            <InputLabel id="carrier-select-label">Carrier</InputLabel>
+            <Select
+              labelId="carrier-select-label"
+              id="carrier-select"
+              value={carrier}
+              label="Carrier"
+              onChange={handleCarrierChange}
+            >
+              <MenuItem value={10}>Ten</MenuItem>
+              <MenuItem value={20}>Twenty</MenuItem>
+              <MenuItem value={30}>Thirty</MenuItem>
+            </Select>
+          </FormControl>
+        </Grid>
+      </Grid>
     </React.Fragment>
   )
 }

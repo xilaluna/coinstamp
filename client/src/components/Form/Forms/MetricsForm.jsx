@@ -1,49 +1,31 @@
 import React from "react"
-import { InputLabel, Grid, FormControl, OutlinedInput, InputAdornment } from "@mui/material"
+import Grid from "@mui/material/Grid"
+import TextField from "@mui/material/TextField"
+import Typography from "@mui/material/Typography"
 
-const AddressForm = () => {
+const MetricsForm = () => {
   return (
-    <>
-      <Grid item xs={4}>
-        <FormControl fullWidth>
-          <InputLabel htmlFor="length-input">Length</InputLabel>
-          <OutlinedInput id="length-input" label="Length" />
-        </FormControl>
+    <React.Fragment>
+      <Typography gutterBottom>Dimensions & Weight</Typography>
+      <Grid container spacing={2}>
+        <Grid item md={4}>
+          <TextField fullWidth id="length" label="Length" variant="outlined" />
+        </Grid>
+        <Grid item md={4}>
+          <TextField fullWidth id="width" label="Width" variant="outlined" />
+        </Grid>
+        <Grid item md={4}>
+          <TextField fullWidth id="height" label="Height" variant="outlined" />
+        </Grid>
+        <Grid item md={6}>
+          <TextField fullWidth id="pounds" label="Pounds(lb)" variant="outlined" />
+        </Grid>
+        <Grid item md={6}>
+          <TextField fullWidth id="ounces" label="Ounces(oz)" variant="outlined" />
+        </Grid>
       </Grid>
-      <Grid item xs={4}>
-        <FormControl fullWidth>
-          <InputLabel htmlFor="width-input">Width</InputLabel>
-          <OutlinedInput id="width-input" label="Width" />
-        </FormControl>
-      </Grid>
-      <Grid item xs={4}>
-        <FormControl fullWidth>
-          <InputLabel htmlFor="height-input">Height</InputLabel>
-          <OutlinedInput id="height-input" label="Height" />
-        </FormControl>
-      </Grid>
-      <Grid item xs={6}>
-        <FormControl fullWidth>
-          <InputLabel htmlFor="pounds-input">Pounds</InputLabel>
-          <OutlinedInput
-            id="pounds-input"
-            label="Pounds"
-            endAdornment={<InputAdornment position="end">lb</InputAdornment>}
-          />
-        </FormControl>
-      </Grid>
-      <Grid item xs={6}>
-        <FormControl fullWidth>
-          <InputLabel htmlFor="ounces-input">Ounces</InputLabel>
-          <OutlinedInput
-            id="ounces-input"
-            label="Ounces"
-            endAdornment={<InputAdornment position="end">oz</InputAdornment>}
-          />
-        </FormControl>
-      </Grid>
-    </>
+    </React.Fragment>
   )
 }
 
-export default AddressForm
+export default MetricsForm
