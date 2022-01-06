@@ -18,7 +18,7 @@ const SubmitForm = () => {
     <React.Fragment>
       <Grid container spacing={2}>
         <Grid item md={4}>
-          <FormControl fullWidth size="small">
+          <FormControl fullWidth>
             <InputLabel id="signature-select-label">Signature</InputLabel>
             <Select
               labelId="signature-select-label"
@@ -42,7 +42,7 @@ const SubmitForm = () => {
             justifyContent: "flex-end",
           }}
         >
-          <Button component={RouterLink} to="/rates" variant="contained">
+          <Button component={RouterLink} to="/rates" variant="contained" size="large">
             Calculate Rates
           </Button>
         </Grid>
