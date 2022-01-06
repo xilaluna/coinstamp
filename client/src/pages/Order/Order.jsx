@@ -1,11 +1,17 @@
 import React from "react"
-import Typography from "@mui/material/Typography"
+
+import Paper from "@mui/material/Paper"
+import Container from "@mui/material/Container"
+
+import OrderTable from "../../components/OrderTable/OrderTable"
 
 const Order = () => {
   return (
-    <React.Fragment>
-      <Typography>Order</Typography>
-    </React.Fragment>
+    <Container maxWidth="md">
+      <Paper sx={{ p: 4 }}>
+        <OrderTable />
+      </Paper>
+    </Container>
   )
 }
 

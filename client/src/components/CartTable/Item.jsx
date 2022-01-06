@@ -17,7 +17,7 @@ const Item = (props) => {
       <TableCell align="right">{carrier}</TableCell>
       <TableCell align="right">{service}</TableCell>
       <TableCell align="right">
-        (From {fromName} | To {toName})
+        ({fromName} to {toName})
       </TableCell>
       <TableCell align="right">${rate}</TableCell>
       <TableCell align="right">
