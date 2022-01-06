@@ -6,7 +6,9 @@ import Typography from "@mui/material/Typography"
 const MetricsForm = () => {
   return (
     <React.Fragment>
-      <Typography gutterBottom>Dimensions & Weight</Typography>
+      <Typography variant="h5" gutterBottom>
+        Dimensions & Weight
+      </Typography>
       <Grid container spacing={2}>
         <Grid item md={4}>
           <TextField fullWidth id="length" label="Length" variant="outlined" />

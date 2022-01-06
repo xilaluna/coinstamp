@@ -15,15 +15,13 @@ const App = () => {
   return (
     <React.Fragment>
       <Navbar />
-      <Container maxWidth="lg">
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="create" element={<Create />} />
-          <Route path="rates" element={<Rates />} />
-          <Route path="cart" element={<Cart />} />
-          <Route path="order" element={<Order />} />
-        </Routes>
-      </Container>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="create" element={<Create />} />
+        <Route path="rates" element={<Rates />} />
+        <Route path="cart" element={<Cart />} />
+        <Route path="order" element={<Order />} />
+      </Routes>
       <Footer />
     </React.Fragment>
   )

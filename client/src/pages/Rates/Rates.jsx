@@ -1,9 +1,11 @@
 import React from "react"
 
 import Grid from "@mui/material/Grid"
-import Box from "@mui/material/Box"
-import Typography from "@mui/material/Typography"
 import Paper from "@mui/material/Paper"
+import Container from "@mui/material/Container"
+
+import RateList from "../../components/Rate/RateList"
+import LabelInfo from "../../components/Info/LabelInfo"
 
 const PaperStyles = {
   p: 4,
@@ -11,16 +13,20 @@ const PaperStyles = {
 
 const Rates = () => {
   return (
-    <React.Fragment>
+    <Container maxWidth="md">
       <Grid container spacing={4} sx={{ my: 2 }}>
         <Grid item xs={12}>
-          <Paper sx={PaperStyles}> Hello </Paper>
+          <Paper sx={PaperStyles}>
+            <LabelInfo />
+          </Paper>
         </Grid>
         <Grid item xs={12}>
-          <Paper sx={PaperStyles}> Hello </Paper>
+          <Paper sx={PaperStyles}>
+            <RateList />
+          </Paper>
         </Grid>
       </Grid>
-    </React.Fragment>
+    </Container>
   )
 }
 

@@ -15,7 +15,9 @@ const CarrierForm = () => {
 
   return (
     <React.Fragment>
-      <Typography gutterBottom>Carrier Information</Typography>
+      <Typography variant="h5" gutterBottom>
+        Carrier Information
+      </Typography>
       <Grid container spacing={2}>
         <Grid item md={6}>
           <FormControl fullWidth>

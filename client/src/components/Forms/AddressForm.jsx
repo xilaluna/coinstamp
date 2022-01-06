@@ -7,7 +7,9 @@ const AddressForm = (props) => {
   const { header } = props
   return (
     <React.Fragment>
-      <Typography gutterBottom>{header}</Typography>
+      <Typography variant="h5" gutterBottom>
+        {header}
+      </Typography>
       <Grid container spacing={2} columns={20}>
         <Grid item md={20}>
           <TextField fullWidth id="country" label="Country" variant="outlined" />
