@@ -14,7 +14,7 @@ const PaperStyles = {
 const Rates = () => {
   return (
     <Container maxWidth="md">
-      <Grid container spacing={4} sx={{ my: 2 }}>
+      <Grid container spacing={4}>
         <Grid item xs={12}>
           <Paper sx={PaperStyles}>
             <LabelInfo />

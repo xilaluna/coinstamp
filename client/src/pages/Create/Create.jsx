@@ -13,7 +13,7 @@ import SubmitForm from "../../components/Forms/SubmitForm"
 const Create = () => {
   return (
     <Container maxWidth="lg">
-      <Paper sx={{ p: 4, my: 2 }}>
+      <Paper sx={{ p: 4 }}>
         <Box component="form" action="/stamp">
           <Grid container spacing={8}>
             <Grid item xs={12}>

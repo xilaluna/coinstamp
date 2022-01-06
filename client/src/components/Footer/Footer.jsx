@@ -10,7 +10,7 @@ const Footer = () => {
       sx={{
         borderTop: (theme) => `1px solid ${theme.palette.divider}`,
         mt: 8,
-        py: [3, 6],
+        py: 6,
       }}
     >
       <Grid container justifyContent="space-between">

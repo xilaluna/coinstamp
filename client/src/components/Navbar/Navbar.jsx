@@ -14,7 +14,7 @@ import Container from "@mui/material/Container"
 
 const Navbar = () => {
   return (
-    <AppBar position="relative">
+    <AppBar position="relative" sx={{ mb: 4 }}>
       <Container maxWidth="lg">
         <Toolbar disableGutters>
           <Link
@@ -33,12 +33,7 @@ const Navbar = () => {
             Create Label
           </Button>
 
-          <IconButton
-            component={RouterLink}
-            to="/cart"
-            size="large"
-            color="inherit"
-          >
+          <IconButton component={RouterLink} to="/cart" size="large" color="inherit">
             <Badge badgeContent={0} color="error">
               <ShoppingCart />
             </Badge>
