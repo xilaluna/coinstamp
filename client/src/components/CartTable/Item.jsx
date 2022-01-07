@@ -14,12 +14,12 @@ const Item = (props) => {
       <TableCell component="th" scope="row">
         <ImageIcon />
       </TableCell>
-      <TableCell align="right">{carrier}</TableCell>
-      <TableCell align="right">{service}</TableCell>
-      <TableCell align="right">
+      <TableCell>{carrier}</TableCell>
+      <TableCell>{service}</TableCell>
+      <TableCell>
         ({fromName} to {toName})
       </TableCell>
-      <TableCell align="right">${rate}</TableCell>
+      <TableCell>${rate}</TableCell>
       <TableCell align="right">
         <IconButton color="primary">
           <DeleteIcon />

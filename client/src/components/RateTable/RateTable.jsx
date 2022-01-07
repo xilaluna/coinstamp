@@ -5,14 +5,14 @@ import TableContainer from "@mui/material/TableContainer"
 import Table from "@mui/material/Table"
 import TableBody from "@mui/material/TableBody"
 
-import Rate from "./Rate"
+import Item from "./Item"
 import data from "../../assets/data/testrates.json"
 
-const RateList = () => {
+const RateTable = () => {
   const rates = data.map((obj) => {
     const { carrier, service, delivery_days, rate } = obj
     return (
-      <Rate
+      <Item
         carrier={carrier}
         service={service}
         delivery_days={delivery_days}
@@ -34,4 +34,4 @@ const RateList = () => {
   )
 }
 
-export default RateList
+export default RateTable

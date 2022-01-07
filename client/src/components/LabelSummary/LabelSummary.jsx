@@ -1,14 +1,14 @@
 import React from "react"
 
 import Grid from "@mui/material/Grid"
-import LabelAddress from "./LabelAddress"
+import Address from "./Address"
 
-const LabelInfo = () => {
+const LabelSummary = () => {
   return (
     <React.Fragment>
       <Grid container spacing={4}>
         <Grid item md={6}>
-          <LabelAddress
+          <Address
             header={"From"}
             name={"John Doe"}
             street1={"417 montgomery street"}
@@ -21,7 +21,7 @@ const LabelInfo = () => {
           />
         </Grid>
         <Grid item md={6}>
-          <LabelAddress
+          <Address
             header={"To"}
             name={"George Costanza"}
             street1={"1 E 161st St."}
@@ -38,4 +38,4 @@ const LabelInfo = () => {
   )
 }
 
-export default LabelInfo
+export default LabelSummary

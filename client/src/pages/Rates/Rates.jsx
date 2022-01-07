@@ -4,8 +4,8 @@ import Grid from "@mui/material/Grid"
 import Paper from "@mui/material/Paper"
 import Container from "@mui/material/Container"
 
-import RateList from "../../components/Rate/RateList"
-import LabelInfo from "../../components/Info/LabelInfo"
+import RateTable from "../../components/RateTable/RateTable"
+import LabelSummary from "../../components/LabelSummary/LabelSummary"
 
 const PaperStyles = {
   p: 4,
@@ -17,12 +17,12 @@ const Rates = () => {
       <Grid container spacing={4}>
         <Grid item xs={12}>
           <Paper sx={PaperStyles}>
-            <LabelInfo />
+            <LabelSummary />
           </Paper>
         </Grid>
         <Grid item xs={12}>
           <Paper sx={PaperStyles}>
-            <RateList />
+            <RateTable />
           </Paper>
         </Grid>
       </Grid>
