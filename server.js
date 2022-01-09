@@ -1,59 +1,50 @@
-require("dotenv").config()
-const express = require("express")
-const session = require("express-session")
-const fs = require("fs")
-const https = require("https")
-const MongoStore = require("connect-mongo")
-const exphbs = require("express-handlebars")
+import dotenv from "dotenv"
+import express from "express"
+import session from "express-session"
+import MongoStore from "connect-mongo"
+import cors from "cors"
 
+// route imports
+import stampRouter from "./routes/stampRoutes.js"
+import rateRouter from "./routes/ratesRoutes.js"
+import checkoutStamps from "./routes/checkoutRoutes.js"
+
+dotenv.config()
+
+// init app
 const app = express()
-app.use(express.urlencoded({ extended: false }))
+
+// JSON parser
 app.use(express.json())
-app.use(
-  session({
-    secret: process.env.SESSION_SECRET,
-    resave: false,
-    saveUninitialized: false,
-    proxy: true,
-    store: MongoStore.create({
-      mongoUrl: process.env.MONGODB_CONNECTION_STRING,
-    }),
-    cookie: {
-      expires: false,
-      secure: true,
-      sameSite: true,
-    },
-  })
-)
-app.use(async (req, res, next) => {
-  res.locals.session = req.session
-  next()
-})
-app.use(express.static("public"))
-app.engine("handlebars", exphbs())
-app.set("view engine", "handlebars")
+app.use(express.urlencoded({ extended: true }))
 
-const indexRouter = require("./routes/index")
-const cartRouter = require("./routes/cart")
-const orderRouter = require("./routes/order")
-const ratesRouter = require("./routes/rates")
-const stampRouter = require("./routes/stamp")
+// init cors
+app.use(cors())
 
-app.use("/", indexRouter)
-app.use("/cart", cartRouter)
-app.use("/order", orderRouter)
-app.use("/rates", ratesRouter)
+// init session
+// app.use(
+//   session({
+//     secret: process.env.SESSION_SECRET,
+//     resave: false,
+//     saveUninitialized: false,
+//     proxy: true,
+//     store: MongoStore.create({
+//       mongoUrl: process.env.MONGODB_CONNECTION_STRING,
+//     }),
+//     cookie: {
+//       expires: false,
+//       secure: true,
+//       sameSite: true,
+//     },
+//   })
+// )
+
+// routes init
 app.use("/stamp", stampRouter)
-
-const server = https.createServer(
-  {
-    key: fs.readFileSync(process.env.SSL_KEY_FILE),
-    cert: fs.readFileSync(process.env.SSL_CERT_FILE),
-  },
-  app
-)
+app.use("/rates", rateRouter)
+app.use("/checkout", checkoutStamps)
 
 const PORT = process.env.PORT || 3000
-server.listen(PORT, () => {
+app.listen(PORT, () => {
   console.log(`Server listening on port : ${PORT}`)
 })
