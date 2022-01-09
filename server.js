@@ -1,4 +1,6 @@
 import dotenv from "dotenv"
+dotenv.config()
+
 import express from "express"
 import session from "express-session"
 import MongoStore from "connect-mongo"
@@ -6,10 +8,6 @@ import cors from "cors"
 
 // route imports
 import stampRouter from "./routes/stampRoutes.js"
-import rateRouter from "./routes/ratesRoutes.js"
-import checkoutStamps from "./routes/checkoutRoutes.js"
-
-dotenv.config()
 
 // init app
 const app = express()
@@ -41,8 +39,6 @@ app.use(cors())
 
 // routes init
 app.use("/stamp", stampRouter)
-app.use("/rates", rateRouter)
-app.use("/checkout", checkoutStamps)
 
 const PORT = process.env.PORT || 3000
 app.listen(PORT, () => {
