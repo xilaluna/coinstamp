@@ -1,7 +1,15 @@
 import express from "express"
-import { getStamp, createStamp } from "../controllers/stampController.js"
+import {
+  getStamp,
+  createStamp,
+  getRates,
+  checkoutStamp,
+} from "../controllers/stampController.js"
 const router = express.Router()
 
-router.get("/", createStamp)
+router.get("/", getStamp)
+router.post("/create", createStamp)
+router.get("/rates", getRates)
+router.get("/checkout", checkoutStamp)
 
 export default router

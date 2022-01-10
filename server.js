@@ -1,12 +1,8 @@
-import dotenv from "dotenv"
-dotenv.config()
-
+import "./config/config.js"
 import express from "express"
 import session from "express-session"
 import MongoStore from "connect-mongo"
 import cors from "cors"
-
-// route imports
 import stampRouter from "./routes/stampRoutes.js"
 
 // init app
@@ -40,7 +36,7 @@ app.use(cors())
 // routes init
 app.use("/stamp", stampRouter)
 
-const PORT = process.env.PORT || 3000
+const PORT = process.env.PORT || 8000
 app.listen(PORT, () => {
   console.log(`Server listening on port : ${PORT}`)
 })
