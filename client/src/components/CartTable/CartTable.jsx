@@ -6,10 +6,11 @@ import Table from "@mui/material/Table"
 import TableBody from "@mui/material/TableBody"
 
 import Item from "./Item"
-import data from "../../assets/data/testorder.json"
+import { useSelector } from "react-redux"
 
 const CartTable = () => {
-  const items = data.map((obj) => {
+  const cart = useSelector((state) => state.cart.cart)
+  const items = cart.map((obj) => {
     const { carrier, service, fromName, toName, rate } = obj
     return (
       <Item
@@ -27,9 +28,13 @@ const CartTable = () => {
         Cart
       </Typography>
       <TableContainer>
-        <Table>
-          <TableBody>{items}</TableBody>
-        </Table>
+        {cart.length > 0 ? (
+          <Table>
+            <TableBody>{items}</TableBody>
+          </Table>
+        ) : (
+          <Typography>No items in cart</Typography>
+        )}
       </TableContainer>
     </React.Fragment>
   )

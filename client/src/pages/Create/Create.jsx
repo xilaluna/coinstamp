@@ -2,7 +2,6 @@ import React from "react"
 
 import Paper from "@mui/material/Paper"
 import Grid from "@mui/material/Grid"
-import Box from "@mui/material/Box"
 import Container from "@mui/material/Container"
 
 import CarrierForm from "../../components/Forms/CarrierForm"
@@ -14,7 +13,7 @@ const Create = () => {
   return (
     <Container maxWidth="lg">
       <Paper sx={{ p: 4 }}>
-        <Box component="form" action="/stamp">
+        <form action="/stamp">
           <Grid container spacing={8}>
             <Grid item xs={12}>
               <CarrierForm />
@@ -32,7 +31,7 @@ const Create = () => {
               <SubmitForm />
             </Grid>
           </Grid>
-        </Box>
+        </form>
       </Paper>
     </Container>
   )
