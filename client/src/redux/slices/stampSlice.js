@@ -1,28 +1,32 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit"
+import axios from "axios"
 
-export const postFormStamp = createAsyncThunk("stamp/postFormStamp", async () => {
-  return fetch("http://localhost:8000/stamp/create").then((res) => {
-    res.json()
-  })
-})
+export const createNewStamp = createAsyncThunk(
+  "stamp/createNewStamp",
+  async (newStamp) => {
+    const response = await axios.post("http://localhost:8000/stamp/create", newStamp)
+    return response.data
+  }
+)
 
 export const stampSlice = createSlice({
   name: "stamps",
   initialState: {
-    stamps: [],
+    stamp: {},
     status: null,
   },
   reducers: {},
   extraReducers: {
-    [postFormStamp.pending]: (state, action) => {
+    [createNewStamp.pending]: (state, action) => {
       state.status = "loading"
     },
-    [postFormStamp.fulfilled]: (state, action) => {
+    [createNewStamp.fulfilled]: (state, action) => {
       state.status = "success"
-      state.stamp.push(action.payload)
+      state.stamp = action.payload
     },
-    [postFormStamp.rejected]: (state, action) => {
+    [createNewStamp.rejected]: (state, action) => {
       state.status = "failed"
+      console.log("failed")
     },
   },
 })

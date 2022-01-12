@@ -11,6 +11,8 @@ import InputAdornment from "@mui/material/InputAdornment"
 import Button from "@mui/material/Button"
 
 import { Link as RouterLink } from "react-router-dom"
+import { useDispatch } from "react-redux"
+import { createNewStamp } from "../../redux/slices/stampSlice"
 
 const CreateStampForm = () => {
   const [formData, setFormData] = useState({
@@ -42,9 +44,14 @@ const CreateStampForm = () => {
 
     delivery_confirmation: "",
   })
-  const handleSubmit = () => {}
+
+  const dispatch = useDispatch()
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    dispatch(createNewStamp(formData))
+  }
   return (
-    <form noValidate onSubmit={handleSubmit} autoComplete="off">
+    <form noValidate onSubmit={handleSubmit}>
       <Grid container spacing={8}>
         <Grid item xs={12}>
           {/* carrier info form  -----------------------------------------------------------------------------------*/}
@@ -375,13 +382,7 @@ const CreateStampForm = () => {
                 justifyContent: "flex-end",
               }}
             >
-              <Button
-                component={RouterLink}
-                to="/rates"
-                variant="contained"
-                size="large"
-                type="submit"
-              >
+              <Button variant="contained" size="large" type="submit">
                 Calculate Rates
               </Button>
             </Grid>
