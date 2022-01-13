@@ -57,14 +57,6 @@ export const createStamp = async (req, res) => {
   }
 }
 
-export const getRates = async (req, res) => {
-  res.json([
-    { carrier: "USPS", service: "Priority", rate: 27.4, delivery_days: 2 },
-    { carrier: "USPS", service: "Priority", rate: 35.48, delivery_days: 1 },
-    { carrier: "USPS", service: "Priority", rate: 35.48, delivery_days: 1 },
-  ])
-}
-
 export const checkoutStamp = async (req, res) => {
   res.send("Checking Out Stamp")
 }
