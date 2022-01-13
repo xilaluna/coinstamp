@@ -5,7 +5,18 @@ import Button from "@mui/material/Button"
 import Stack from "@mui/material/Stack"
 import Divider from "@mui/material/Divider"
 
+import { useSelector } from "react-redux"
+
 const Summary = () => {
+  const cart = useSelector((state) => state.cart.cart)
+  let orderTotal = 0
+  console.log(cart)
+  let subTotal = 0
+  for (let i = 0; i < cart.length; i++) {
+    const ratePrice = parseFloat(cart[i].rate.rate)
+    subTotal += ratePrice
+    orderTotal += ratePrice
+  }
   return (
     <React.Fragment>
       <Typography variant="h5" gutterBottom>
@@ -14,16 +25,28 @@ const Summary = () => {
       <Stack spacing={2}>
         <Stack direction="row" sx={{ justifyContent: "space-between" }}>
           <Typography>Subtotal</Typography>
-          <Typography>$9.00</Typography>
+          {subTotal === 0 ? (
+            <Typography>$0.00</Typography>
+          ) : (
+            <Typography>{`$${subTotal}`}</Typography>
+          )}
         </Stack>
         <Stack direction="row" sx={{ justifyContent: "space-between" }}>
           <Typography>Service Fee</Typography>
-          <Typography>$2.00</Typography>
+          {subTotal === 0 ? (
+            <Typography>$0.00</Typography>
+          ) : (
+            <Typography>$5.00</Typography>
+          )}
         </Stack>
         <Divider />
         <Stack direction="row" sx={{ justifyContent: "space-between" }}>
           <Typography>Order Total</Typography>
-          <Typography>$11.00</Typography>
+          {subTotal === 0 ? (
+            <Typography>$0.00</Typography>
+          ) : (
+            <Typography>{`$${orderTotal + 5}`}</Typography>
+          )}
         </Stack>
         <Button variant="contained">Checkout</Button>
       </Stack>
