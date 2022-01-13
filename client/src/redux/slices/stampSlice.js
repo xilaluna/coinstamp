@@ -1,32 +1,31 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit"
 import axios from "axios"
 
-export const createNewStamp = createAsyncThunk(
-  "stamp/createNewStamp",
-  async (newStamp) => {
-    const response = await axios.post("http://localhost:8000/stamp/create", newStamp)
-    return response.data
-  }
-)
+export const createStamp = createAsyncThunk("stamp/createStamp", async (newStamp) => {
+  const response = await axios.post("http://localhost:8000/stamp/create", newStamp)
+  return response.data
+})
+
+export const getAddresses = createAsyncThunk("stamp/getAddresses", async (adresses) => {
+  const response = await axios.get(
+    `http://localhost:8000/stamp/addresses?to_address=${adresses.to_address}&from_address=${adresses.from_address}`
+  )
+  return response.data
+})
 
 export const stampSlice = createSlice({
   name: "stamps",
   initialState: {
-    stamp: {},
-    status: null,
+    shipment: {},
+    addresses: {},
   },
   reducers: {},
   extraReducers: {
-    [createNewStamp.pending]: (state, action) => {
-      state.status = "loading"
+    [createStamp.fulfilled]: (state, action) => {
+      state.shipment = action.payload
     },
-    [createNewStamp.fulfilled]: (state, action) => {
-      state.status = "success"
-      state.stamp = action.payload
-    },
-    [createNewStamp.rejected]: (state, action) => {
-      state.status = "failed"
-      console.log("failed")
+    [getAddresses.fulfilled]: (state, action) => {
+      state.addresses = action.payload
     },
   },
 })

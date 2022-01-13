@@ -2,8 +2,10 @@ import React from "react"
 
 import Grid from "@mui/material/Grid"
 import Address from "./Address"
+import { useSelector } from "react-redux"
 
 const LabelSummary = () => {
+  //const addresses = useSelector((state) => state.stamp.addresses)
   return (
     <React.Fragment>
       <Grid container spacing={4}>

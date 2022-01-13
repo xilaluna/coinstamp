@@ -10,9 +10,9 @@ import Typography from "@mui/material/Typography"
 import InputAdornment from "@mui/material/InputAdornment"
 import Button from "@mui/material/Button"
 
-import { Link as RouterLink } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 import { useDispatch } from "react-redux"
-import { createNewStamp } from "../../redux/slices/stampSlice"
+import { createStamp } from "../../redux/slices/stampSlice"
 
 const CreateStampForm = () => {
   const [formData, setFormData] = useState({
@@ -45,10 +45,13 @@ const CreateStampForm = () => {
     delivery_confirmation: "",
   })
 
+  let navigate = useNavigate()
+
   const dispatch = useDispatch()
-  const handleSubmit = (e) => {
+  async function handleSubmit(e) {
     e.preventDefault()
-    dispatch(createNewStamp(formData))
+    await dispatch(createStamp(formData))
+    navigate("/rates")
   }
   return (
     <form noValidate onSubmit={handleSubmit}>

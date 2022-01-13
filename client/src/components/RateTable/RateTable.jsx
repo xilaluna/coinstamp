@@ -6,13 +6,16 @@ import Table from "@mui/material/Table"
 import TableBody from "@mui/material/TableBody"
 
 import Item from "./Item"
-import data from "../../assets/data/testrates.json"
+import { useSelector } from "react-redux"
 
 const RateTable = () => {
-  const rates = data.map((obj) => {
-    const { carrier, service, delivery_days, rate } = obj
+  const rates = useSelector((state) => state.stamp.shipment.rates)
+
+  const rateData = rates.map((obj) => {
+    const { id, carrier, service, delivery_days, rate } = obj
     return (
       <Item
+        key={`${id}-${service}`}
         carrier={carrier}
         service={service}
         delivery_days={delivery_days}
@@ -27,7 +30,7 @@ const RateTable = () => {
       </Typography>
       <TableContainer>
         <Table>
-          <TableBody>{rates}</TableBody>
+          <TableBody>{rateData}</TableBody>
         </Table>
       </TableContainer>
     </React.Fragment>

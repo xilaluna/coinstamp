@@ -1,5 +1,5 @@
 [
   { "carrier": "USPS", "service": "Priority", "rate": 27.4, "delivery_days": 2 },
   { "carrier": "USPS", "service": "Priority", "rate": 35.48, "delivery_days": 1 },
-  { "carrier": "USPS", "service": "Priority", "rate": 35.48, "delivery_days": 1 }
+  { "carrier": "USPS", "service": "Priority", "rate": 20.32, "delivery_days": 1 }
 ]
