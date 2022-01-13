@@ -66,7 +66,6 @@ export const getAddresses = async (req, res) => {
     const toAddress = await api.Address.retrieve(req.query.to_address)
     const fromAddress = await api.Address.retrieve(req.query.from_address)
 
-    console.log(req.query)
     res.status(200).json({ to_address: toAddress, from_address: fromAddress })
   } catch (error) {
     res.status(400).json({ message: error })

@@ -11,14 +11,16 @@ import { useSelector } from "react-redux"
 const CartTable = () => {
   const cart = useSelector((state) => state.cart.cart)
   const items = cart.map((obj) => {
-    const { carrier, service, fromName, toName, rate } = obj
+    const { shipment, addresses, rate } = obj
     return (
       <Item
-        carrier={carrier}
-        service={service}
-        fromName={fromName}
-        toName={toName}
-        rate={rate}
+        key={`${shipment.id}-${addresses.from_address.name}`}
+        id={shipment.id}
+        carrier={rate.carrier}
+        service={rate.service}
+        fromName={addresses.from_address.name}
+        toName={addresses.to_address.name}
+        rate={rate.rate}
       />
     )
   })

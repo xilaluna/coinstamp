@@ -1,18 +1,22 @@
 import React from "react"
 
 import Grid from "@mui/material/Grid"
-import Address from "./Address"
-import { useSelector } from "react-redux"
 import CircularProgress from "@mui/material/CircularProgress"
 import Divider from "@mui/material/Divider"
+import Box from "@mui/material/Box"
+
+import Address from "./Address"
+import { useSelector } from "react-redux"
 
 const LabelSummary = () => {
   const addresses = useSelector((state) => state.stamp.addresses)
-  console.log(addresses)
+
   return (
     <React.Fragment>
       {Object.keys(addresses).length === 0 ? (
-        <CircularProgress />
+        <Box sx={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
+          <CircularProgress />
+        </Box>
       ) : (
         <Grid container spacing={4}>
           <Grid item md={6}>

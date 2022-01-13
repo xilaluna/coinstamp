@@ -6,11 +6,18 @@ export const cartSlice = createSlice({
     cart: [],
   },
   reducers: {
-    addToCart: (state) => {
-      state.cart.push({})
+    addToCart: (state, action) => {
+      console.log(action.payload)
+      const item = action.payload
+      state.cart.push(item)
     },
     deleteFromCart: (state, action) => {
-      state.cart.splice(action.payload, 1)
+      const shipmentId = action.payload
+      for (let i = 0; i < state.cart.length; i++) {
+        if (state.cart[i].shipment.id === shipmentId) {
+          state.cart.splice(i, 1)
+        }
+      }
     },
   },
 })

@@ -48,7 +48,7 @@ const CreateStampForm = () => {
   let navigate = useNavigate()
 
   const dispatch = useDispatch()
-  async function handleSubmit(e) {
+  const handleSubmit = async (e) => {
     e.preventDefault()
     await dispatch(createStamp(formData))
     navigate("/rates")

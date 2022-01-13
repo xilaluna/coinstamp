@@ -16,6 +16,7 @@ const RateTable = () => {
     return (
       <Item
         key={`${id}-${service}`}
+        id={id}
         carrier={carrier}
         service={service}
         delivery_days={delivery_days}
