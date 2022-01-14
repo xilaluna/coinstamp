@@ -13,7 +13,7 @@ app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 
 // init cors
-app.use(cors())
+app.use(cors({ origin: "*" }))
 
 // init session
 // app.use(
@@ -35,6 +35,10 @@ app.use(cors())
 
 // routes init
 app.use("/stamp", stampRouter)
+
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static("client/build"))
+}
 
 const PORT = process.env.PORT || 8000
 app.listen(PORT, () => {
