@@ -2,7 +2,7 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit"
 import axios from "axios"
 
 export const checkoutCart = createAsyncThunk("order/checkoutCart", async (newOrder) => {
-  const response = await axios.post("http://localhost:8000/stamp/checkout", newOrder)
+  const response = await axios.post("/stamp/checkout", newOrder)
   return response.data
 })
 

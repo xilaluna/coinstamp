@@ -2,13 +2,13 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit"
 import axios from "axios"
 
 export const createStamp = createAsyncThunk("stamp/createStamp", async (newStamp) => {
-  const response = await axios.post("http://localhost:8000/stamp/create", newStamp)
+  const response = await axios.post("/stamp/create", newStamp)
   return response.data
 })
 
 export const getAddresses = createAsyncThunk("stamp/getAddresses", async (adresses) => {
   const response = await axios.get(
-    `http://localhost:8000/stamp/addresses?to_address=${adresses.to_address}&from_address=${adresses.from_address}`
+    `/stamp/addresses?to_address=${adresses.to_address}&from_address=${adresses.from_address}`
   )
   return response.data
 })
