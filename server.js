@@ -4,6 +4,7 @@ import session from "express-session"
 import MongoStore from "connect-mongo"
 import cors from "cors"
 import stampRouter from "./routes/stampRoutes.js"
+import path from "path"
 
 // init app
 const app = express()
@@ -38,6 +39,10 @@ app.use("/stamp", stampRouter)
 
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"))
+
+  app.get("*", (req, res) => {
+    res.sendFile(path.resolve(__dirname, "client", "build", "index.html"))
+  })
 }
 
 const PORT = process.env.PORT || 8000
