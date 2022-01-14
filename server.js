@@ -1,7 +1,5 @@
 import "./config/config.js"
 import express from "express"
-import session from "express-session"
-import MongoStore from "connect-mongo"
 import cors from "cors"
 import stampRouter from "./routes/stampRoutes.js"
 import path from "path"
@@ -15,24 +13,6 @@ app.use(express.urlencoded({ extended: true }))
 
 // init cors
 app.use(cors({ origin: "*" }))
-
-// init session
-// app.use(
-//   session({
-//     secret: process.env.SESSION_SECRET,
-//     resave: false,
-//     saveUninitialized: false,
-//     proxy: true,
-//     store: MongoStore.create({
-//       mongoUrl: process.env.MONGODB_CONNECTION_STRING,
-//     }),
-//     cookie: {
-//       expires: false,
-//       secure: true,
-//       sameSite: true,
-//     },
-//   })
-// )
 
 // routes init
 app.use("/stamp", stampRouter)
