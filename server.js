@@ -1,42 +1,51 @@
-require("dotenv").config()
-const express = require("express")
-const session = require("express-session")
-const MongoStore = require("connect-mongo")
-const exphbs = require("express-handlebars")
+import "./config/config.js"
+import express from "express"
+import session from "express-session"
+import MongoStore from "connect-mongo"
+import cors from "cors"
+import stampRouter from "./routes/stampRoutes.js"
+import path from "path"
 
+// init app
 const app = express()
 
-app.use(express.urlencoded({ extended: false }))
+// JSON parser
 app.use(express.json())
-app.use(
-  session({
-    secret: process.env.SESSION_SECRET,
-    resave: false,
-    saveUninitialized: false,
-    store: MongoStore.create({
-      mongoUrl: process.env.MONGODB_CONNECTION_STRING,
-    }),
-    cookie: {
-      maxAge: 1000 * 60 * 5,
-      httpOnly: true,
-    },
-  })
-)
-app.use(express.static("public"))
-app.engine("handlebars", exphbs())
-app.set("view engine", "handlebars")
+app.use(express.urlencoded({ extended: true }))
 
-const indexRouter = require("./routes/index")
-const stampRouter = require("./routes/stamp")
-const cartRouter = require("./routes/cart")
-const orderRouter = require("./routes/order")
+// init cors
+app.use(cors({ origin: "*" }))
 
-app.use("/", indexRouter)
+// init session
+// app.use(
+//   session({
+//     secret: process.env.SESSION_SECRET,
+//     resave: false,
+//     saveUninitialized: false,
+//     proxy: true,
+//     store: MongoStore.create({
+//       mongoUrl: process.env.MONGODB_CONNECTION_STRING,
+//     }),
+//     cookie: {
+//       expires: false,
+//       secure: true,
+//       sameSite: true,
+//     },
+//   })
+// )
+
+// routes init
 app.use("/stamp", stampRouter)
-app.use("/cart", cartRouter)
-app.use("/order", orderRouter)
 
-const PORT = process.env.PORT || 3000
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static("client/build"))
+
+  app.get("*", (req, res) => {
+    res.sendFile(path.resolve(__dirname, "client", "build", "index.html"))
+  })
+}
+
+const PORT = process.env.PORT || 8000
 app.listen(PORT, () => {
   console.log(`Server listening on port : ${PORT}`)
 })
