@@ -73,7 +73,6 @@ export const checkoutStamp = async (req, res) => {
     for (let i = 0; i < shipment.rates.length; i++) {
       if (shipment.rates[i].id === order.rate.id) {
         rate += parseFloat(shipment.rates[i].rate)
-        console.log(rate)
         break
       }
     }
