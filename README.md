@@ -10,7 +10,7 @@ We set out to create a platform which would allow users to practice their right 
 ## Tech Stack
 
 - [Express](https://expressjs.com/) - Web Framework
-- [Handlebars](https://handlebarsjs.com/) - Templating View Engine
+- [React](https://reactjs.org/) - Front End
 - [NodeJS](https://nodejs.org/en/) - Runtime Environnment
 - [Express Session](https://www.npmjs.com/package/express-session) - Runtime Environnment
 
