@@ -12,7 +12,7 @@ app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 
 // init cors
-app.use(cors({ origin: "*" }))
+app.use(cors())
 
 // routes init
 app.use("/stamp", stampRouter)
