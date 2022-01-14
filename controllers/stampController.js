@@ -80,7 +80,7 @@ export const checkoutStamp = async (req, res) => {
       name: "Stamp",
       description: `${order.rate.carrier}, ${order.rate.service} (${order.addresses.from_address.name} to ${order.addresses.to_address.name})`,
       local_price: {
-        amount: rate,
+        amount: 0.01,
         currency: "USD",
       },
       pricing_type: "fixed_price",
