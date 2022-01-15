@@ -1,59 +1,31 @@
-require("dotenv").config()
-const express = require("express")
-const session = require("express-session")
-const fs = require("fs")
-const https = require("https")
-const MongoStore = require("connect-mongo")
-const exphbs = require("express-handlebars")
+import "./config/config.js"
+import express from "express"
+import cors from "cors"
+import stampRouter from "./routes/stampRoutes.js"
+import path from "path"
 
+// init app
 const app = express()
-app.use(express.urlencoded({ extended: false }))
+
+// JSON parser
 app.use(express.json())
-app.use(
-  session({
-    secret: process.env.SESSION_SECRET,
-    resave: false,
-    saveUninitialized: false,
-    proxy: true,
-    store: MongoStore.create({
-      mongoUrl: process.env.MONGODB_CONNECTION_STRING,
-    }),
-    cookie: {
-      expires: false,
-      secure: true,
-      sameSite: true,
-    },
-  })
-)
-app.use(async (req, res, next) => {
-  res.locals.session = req.session
-  next()
-})
-app.use(express.static("public"))
-app.engine("handlebars", exphbs())
-app.set("view engine", "handlebars")
+app.use(express.urlencoded({ extended: true }))
 
-const indexRouter = require("./routes/index")
-const cartRouter = require("./routes/cart")
-const orderRouter = require("./routes/order")
-const ratesRouter = require("./routes/rates")
-const stampRouter = require("./routes/stamp")
+// init cors
+app.use(cors())
 
-app.use("/", indexRouter)
-app.use("/cart", cartRouter)
-app.use("/order", orderRouter)
-app.use("/rates", ratesRouter)
+// routes init
 app.use("/stamp", stampRouter)
 
-const server = https.createServer(
-  {
-    key: fs.readFileSync(process.env.SSL_KEY_FILE),
-    cert: fs.readFileSync(process.env.SSL_CERT_FILE),
-  },
-  app
-)
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static("client/build"))
 
-const PORT = process.env.PORT || 3000
-server.listen(PORT, () => {
+  app.get("*", (req, res) => {
+    res.sendFile(path.resolve(__dirname, "client", "build", "index.html"))
+  })
+}
+
+const PORT = process.env.PORT || 8000
+app.listen(PORT, () => {
   console.log(`Server listening on port : ${PORT}`)
 })
