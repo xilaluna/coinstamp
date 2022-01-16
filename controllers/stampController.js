@@ -1,14 +1,7 @@
-import Easypost from "@easypost/api"
-import coinbase from "coinbase-commerce-node"
-
-const api = new Easypost(process.env.EASYPOST_TEST_KEY)
-
-const Client = coinbase.Client
-const Webhook = coinbase.Webhook
-Client.init(process.env.COINBASE_KEY)
+import { Charge, Webhook } from "../config/coinbase.js"
+import easypost from "../config/easypost.js"
 
 export const getStamp = async (req, res) => {
-  // fetch the shipment address
   res.redirect("/order")
 }
 
@@ -45,11 +38,11 @@ export const createStamp = async (req, res) => {
       parseFloat(stamp.packageWeightOunces) + parseFloat(stamp.packageWeightPounds) * 16,
   }
   try {
-    const toAddress = await new api.Address(toAddressData)
-    const fromAddress = await new api.Address(fromAddressData)
-    const parcelInfo = await new api.Parcel(parcelInfoData)
+    const toAddress = await new easypost.Address(toAddressData)
+    const fromAddress = await new easypost.Address(fromAddressData)
+    const parcelInfo = await new easypost.Parcel(parcelInfoData)
 
-    const shipment = await new api.Shipment({
+    const shipment = await new easypost.Shipment({
       to_address: toAddress,
       from_address: fromAddress,
       parcel: parcelInfo,
@@ -64,12 +57,11 @@ export const createStamp = async (req, res) => {
 }
 
 export const checkoutStamp = async (req, res) => {
-  const Charge = coinbase.resources.Charge
   const order = req.body
   let rate = 0
 
   try {
-    const shipment = await api.Shipment.retrieve(order.shipment.id)
+    const shipment = await easypost.Shipment.retrieve(order.shipment.id)
     for (let i = 0; i < shipment.rates.length; i++) {
       if (shipment.rates[i].id === order.rate.id) {
         rate += parseFloat(shipment.rates[i].rate)
@@ -94,8 +86,8 @@ export const checkoutStamp = async (req, res) => {
 
 export const getAddresses = async (req, res) => {
   try {
-    const toAddress = await api.Address.retrieve(req.query.to_address)
-    const fromAddress = await api.Address.retrieve(req.query.from_address)
+    const toAddress = await easypost.Address.retrieve(req.query.to_address)
+    const fromAddress = await easypost.Address.retrieve(req.query.from_address)
 
     res.status(200).json({ to_address: toAddress, from_address: fromAddress })
   } catch (error) {
@@ -119,7 +111,7 @@ export const orderStamp = async (req, res) => {
     // }
 
     if (event.type === "charge:confirmed") {
-      const shipment = await api.Shipment.retrieve(shipmentId)
+      const shipment = await easypost.Shipment.retrieve(shipmentId)
       const boughtShipment = await shipment.buy(rateId)
 
       res.json(boughtShipment)

@@ -2,21 +2,21 @@ import "./config/config.js"
 import express from "express"
 import cors from "cors"
 import stampRouter from "./routes/stampRoutes.js"
-import session from "express-session"
+// import session from "express-session"
 import path from "path"
-import { createClient } from "redis"
-import * as connectRedis from "connect-redis"
+// import { createClient } from "redis"
+// import * as connectRedis from "connect-redis"
 
 // init app
 const app = express()
 
 // init redis
-const redisClient = createClient()
-redisClient.unref()
-redisClient.on("error", (error) => console.log("Redis Client Error", error))
+// const redisClient = createClient()
+// redisClient.unref()
+// redisClient.on("error", (error) => console.log("Redis Client Error", error))
 
-const RedisStore = connectRedis(session)
-let store = new RedisStore({ client: redisClient })
+// const RedisStore = connectRedis(session)
+// let store = new RedisStore({ client: redisClient })
 
 // JSON parser
 app.use(express.json())
