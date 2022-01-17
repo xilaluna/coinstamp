@@ -1,14 +1,34 @@
 import "./config/config.js"
 import express from "express"
 import cors from "cors"
-import stampRouter from "./routes/stampRoutes.js"
-// import session from "express-session"
+import session from "express-session"
 import path from "path"
+import stampRouter from "./routes/stampRoutes.js"
+import cartRouter from "./routes/cartRoutes.js"
+import ordersRouter from "./routes/ordersRoutes.js"
+
 // import { createClient } from "redis"
 // import * as connectRedis from "connect-redis"
 
 // init app
 const app = express()
+
+// JSON parser
+app.use(express.json())
+app.use(express.urlencoded({ extended: true }))
+
+app.use(
+  session({
+    secret: process.env.SESSION_SECRET,
+    resave: false,
+    saveUninitialized: false,
+    cookie: {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === "production",
+      maxAge: 1000 * 60 * 60,
+    },
+  })
+)
 
 // init redis
 // const redisClient = createClient()
@@ -18,15 +38,13 @@ const app = express()
 // const RedisStore = connectRedis(session)
 // let store = new RedisStore({ client: redisClient })
 
-// JSON parser
-app.use(express.json())
-app.use(express.urlencoded({ extended: true }))
-
 // init cors
 app.use(cors({ credentials: true, origin: "http://localhost:3000" }))
 
 // routes init
 app.use("/stamp", stampRouter)
+app.use("/cart", cartRouter)
+app.use("/order", ordersRouter)
 
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"))
