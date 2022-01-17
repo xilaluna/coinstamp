@@ -1,4 +1,4 @@
-import { Webhook } from "coinbase-commerce-node"
+import { Webhook } from "../config/coinbase.js"
 import easypost from "../config/easypost.js"
 
 export const getOrders = async (req, res) => {
