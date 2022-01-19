@@ -32,12 +32,10 @@ export const stampSlice = createSlice({
     [getStamp.pending]: (state) => {
       state.status = "loading"
     },
-
     [getStamp.fulfilled]: (state, action) => {
       state.status = "succeeded"
       state.stamp = action.payload
     },
-
     [getStamp.rejected]: (state) => {
       state.status = "failed"
     },

@@ -45,12 +45,12 @@ const CreateStampForm = () => {
     delivery_confirmation: "",
   })
 
-  let navigate = useNavigate()
-
+  const navigate = useNavigate()
   const dispatch = useDispatch()
-  const handleSubmit = async (e) => {
+
+  const handleSubmit = (e) => {
     e.preventDefault()
-    await dispatch(createStamp(formData))
+    dispatch(createStamp(formData))
     navigate("/rates")
   }
   return (

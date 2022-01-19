@@ -4,13 +4,13 @@ import Typography from "@mui/material/Typography"
 import TableContainer from "@mui/material/TableContainer"
 import Table from "@mui/material/Table"
 import TableBody from "@mui/material/TableBody"
+import Box from "@mui/material/Box"
+import CircularProgress from "@mui/material/CircularProgress"
 
 import Item from "./Item"
-import { useSelector } from "react-redux"
 
-const RateTable = () => {
-  const rates = useSelector((state) => state.stamp.shipment.rates)
-
+const RateTable = (props) => {
+  const { rates } = props
   const rateData = rates.map((obj) => {
     const { id, carrier, service, delivery_days, rate } = obj
     return (
@@ -29,11 +29,17 @@ const RateTable = () => {
       <Typography variant="h5" gutterBottom>
         Select a Rate
       </Typography>
-      <TableContainer>
-        <Table>
-          <TableBody>{rateData}</TableBody>
-        </Table>
-      </TableContainer>
+      {props ? (
+        <TableContainer>
+          <Table>
+            <TableBody>{rateData}</TableBody>
+          </Table>
+        </TableContainer>
+      ) : (
+        <Box sx={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
+          <CircularProgress />
+        </Box>
+      )}
     </React.Fragment>
   )
 }
