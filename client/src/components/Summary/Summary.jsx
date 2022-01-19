@@ -7,10 +7,11 @@ import Divider from "@mui/material/Divider"
 
 import { useSelector } from "react-redux"
 import { useDispatch } from "react-redux"
-import { checkoutCart } from "../../redux/slices/orderSlice"
+import { checkoutCart } from "../../redux/slices/cartSlice"
 
 const Summary = () => {
   const cart = useSelector((state) => state.cart.cart)
+  const dispatch = useDispatch()
 
   let orderTotal = 0
   let subTotal = 0
@@ -20,9 +21,9 @@ const Summary = () => {
     subTotal += ratePrice
     orderTotal += ratePrice
   }
-  const dispatch = useDispatch()
+
   const handleCheckout = () => {
-    dispatch(checkoutCart(cart[0]))
+    dispatch(checkoutCart(cart))
   }
   return (
     <React.Fragment>

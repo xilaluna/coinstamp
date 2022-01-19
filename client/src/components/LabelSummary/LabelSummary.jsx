@@ -12,7 +12,7 @@ const LabelSummary = (props) => {
 
   return (
     <React.Fragment>
-      {props ? (
+      {to_address && from_address ? (
         <Grid container spacing={4}>
           <Grid item md={6}>
             <Address

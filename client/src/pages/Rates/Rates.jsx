@@ -8,13 +8,19 @@ import RateTable from "../../components/RateTable/RateTable"
 import LabelSummary from "../../components/LabelSummary/LabelSummary"
 
 import { useSelector } from "react-redux"
+import { useDispatch } from "react-redux"
+import { getStamp } from "../../redux/slices/stampSlice"
 
 const PaperStyles = {
   p: 4,
 }
 
 const Rates = () => {
-  const stamp = useSelector((state) => state.stamp.stamp)
+  const { stamp, status } = useSelector((state) => state.stamp)
+  const dispatch = useDispatch()
+  if (status === "idle") {
+    dispatch(getStamp())
+  }
   return (
     <Container maxWidth="md">
       <Grid container spacing={4}>
