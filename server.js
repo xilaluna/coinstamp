@@ -5,7 +5,7 @@ import session from "express-session"
 import path from "path"
 import stampRouter from "./routes/stampRoutes.js"
 import cartRouter from "./routes/cartRoutes.js"
-import ordersRouter from "./routes/ordersRoutes.js"
+import orderRouter from "./routes/orderRoutes.js"
 
 // import { createClient } from "redis"
 // import * as connectRedis from "connect-redis"
@@ -44,7 +44,7 @@ app.use(cors({ credentials: true, origin: "http://localhost:3000" }))
 // routes init
 app.use("/stamp", stampRouter)
 app.use("/cart", cartRouter)
-app.use("/order", ordersRouter)
+app.use("/order", orderRouter)
 
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"))
