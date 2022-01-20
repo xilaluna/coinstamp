@@ -7,17 +7,17 @@ export const getCart = createAsyncThunk("cart/getCart", async () => {
 })
 
 export const addToCart = createAsyncThunk("cart/addToCart", async (rateId) => {
-  const response = await axios.post("/cart", { params: { id: rateId } })
+  const response = await axios.post(`/cart/${rateId}`)
   return response.data
 })
 
 export const deleteFromCart = createAsyncThunk("cart/deleteFromCart", async (rateId) => {
-  const response = await axios.delete("/cart", { params: { id: rateId } })
+  const response = await axios.delete(`/cart/${rateId}`)
   return response.data
 })
 
 export const checkoutCart = createAsyncThunk("cart/checkoutCart", async () => {
-  const response = await axios.get("/cart")
+  const response = await axios.get("/cart/checkout")
   return response.data
 })
 

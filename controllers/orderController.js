@@ -4,9 +4,9 @@ import easypost from "../config/easypost.js"
 export const getOrder = async (req, res) => {
   try {
     const order = req.session.order
-    res.send(200).json(order)
+    res.status(200).json(order)
   } catch (error) {
-    res.send(400).json({ message: error.message })
+    res.status(400).json({ message: error.message })
   }
 }
 
@@ -27,9 +27,9 @@ export const processOrder = async (req, res) => {
         req.session.order.push(boughtShipment)
       }
 
-      res.send(201).redirect("http://localhost:3000/order")
+      res.status(201).redirect("http://localhost:3000/order")
     }
   } catch (error) {
-    res.send(409).json({ message: error.message })
+    res.status(409).json({ message: error.message })
   }
 }

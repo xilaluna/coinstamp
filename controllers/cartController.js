@@ -3,9 +3,9 @@ import { Charge } from "../config/coinbase.js"
 export const getCart = async (req, res) => {
   try {
     const cart = req.session.cart
-    res.send(200).json(cart)
+    res.status(200).json(cart)
   } catch (error) {
-    res.send(400).json({ message: error.message })
+    res.status(400).json({ message: error.message })
   }
 }
 
@@ -14,13 +14,14 @@ export const addToCart = async (req, res) => {
   let stamp = req.session.stamp
   try {
     stamp.rates = stamp.rates.filter((rate) => rate.id === rateId)
-    console.log(stamp)
     if (req.session.cart) {
       req.session.cart.push(stamp)
     } else {
       req.session.cart = [stamp]
     }
-    res.status(201)
+    const cart = req.session.cart
+
+    res.status(201).json(cart)
   } catch (error) {
     res.status(409).json({ message: error.message })
   }
@@ -52,14 +53,15 @@ export const checkoutCart = async (req, res) => {
       //fix me
       description: "order details",
       local_price: {
-        amount: ratePrice,
+        amount: 0.01,
         currency: "USD",
       },
       pricing_type: "fixed_price",
     })
+    console.log(charge)
 
-    res.send(200).json(charge.hosted_url)
+    res.status(200).json(charge)
   } catch (error) {
-    res.send(400).json({ message: error.message })
+    res.status(400).json({ message: error.message })
   }
 }

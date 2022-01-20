@@ -5,25 +5,24 @@ import Button from "@mui/material/Button"
 import Stack from "@mui/material/Stack"
 import Divider from "@mui/material/Divider"
 
-import { useSelector } from "react-redux"
 import { useDispatch } from "react-redux"
 import { checkoutCart } from "../../redux/slices/cartSlice"
 
-const Summary = () => {
-  const cart = useSelector((state) => state.cart.cart)
+const Summary = (props) => {
+  const { cart } = props
   const dispatch = useDispatch()
 
   let orderTotal = 0
   let subTotal = 0
 
   for (let i = 0; i < cart.length; i++) {
-    const ratePrice = parseFloat(cart[i].rate.rate)
+    const ratePrice = parseFloat(cart[i].rates[0].rate)
     subTotal += ratePrice
     orderTotal += ratePrice
   }
 
   const handleCheckout = () => {
-    dispatch(checkoutCart(cart))
+    dispatch(checkoutCart())
   }
   return (
     <React.Fragment>
