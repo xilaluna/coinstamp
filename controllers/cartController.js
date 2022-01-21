@@ -2,8 +2,10 @@ import { Charge } from "../config/coinbase.js"
 
 export const getCart = async (req, res) => {
   try {
-    const cart = req.session.cart
-    res.status(200).json(cart)
+    if (!req.session.cart) {
+      req.session.cart = []
+    }
+    res.status(200).json(req.session.cart)
   } catch (error) {
     res.status(400).json({ message: error.message })
   }
@@ -35,7 +37,7 @@ export const deleteFromCart = async (req, res) => {
         req.session.cart.splice(i, 1)
       }
     }
-    res.status(200)
+    res.status(200).send(req.session.cart)
   } catch (error) {
     res.status(400).json({ message: error.message })
   }
@@ -53,12 +55,11 @@ export const checkoutCart = async (req, res) => {
       //fix me
       description: "order details",
       local_price: {
-        amount: 0.01,
+        amount: ratePrice,
         currency: "USD",
       },
       pricing_type: "fixed_price",
     })
-    console.log(charge)
 
     res.status(200).json(charge)
   } catch (error) {
