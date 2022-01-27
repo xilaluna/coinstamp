@@ -8,19 +8,13 @@ import CartTable from "../../components/CartTable/CartTable"
 import Summary from "../../components/Summary/Summary"
 
 import { useSelector } from "react-redux"
-import { useDispatch } from "react-redux"
-import { getCart } from "../../redux/slices/cartSlice"
 
 const PaperStyles = {
   p: 4,
 }
 
 const Cart = () => {
-  const { cart, status } = useSelector((state) => state.cart)
-  const dispatch = useDispatch()
-  if (status === "idle") {
-    dispatch(getCart())
-  }
+  const { cart } = useSelector((state) => state.cart)
 
   return (
     <Container maxWidth="lg">

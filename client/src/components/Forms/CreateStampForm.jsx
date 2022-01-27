@@ -14,8 +14,12 @@ import { useNavigate } from "react-router-dom"
 import { useDispatch } from "react-redux"
 import { createStamp } from "../../redux/slices/stampSlice"
 
+import carrierInfo from "../../assets/data/carrierInfo.json"
+
 const CreateStampForm = () => {
   const [formData, setFormData] = useState({
+    carrier: "",
+
     fromName: "",
     fromStreet1: "",
     fromStreet2: "",
@@ -38,9 +42,9 @@ const CreateStampForm = () => {
     packageLength: "",
     packageWidth: "",
     packageHeight: "",
-    packageWeightPounds: 0,
-    packageWeightOunces: 0,
-    packageWeightTotal: 0,
+    packageWeightPounds: "",
+    packageWeightOunces: "",
+    packageWeightTotal: "",
 
     delivery_confirmation: "",
   })
@@ -70,11 +74,13 @@ const CreateStampForm = () => {
                   labelId="carrier-select-label"
                   id="carrier-select"
                   label="Carrier"
-                  value={10}
+                  value={formData.carrier}
+                  onChange={(e) => setFormData({ ...formData, carrier: e.target.value })}
                 >
-                  <MenuItem value={10}>Ten</MenuItem>
-                  <MenuItem value={20}>Twenty</MenuItem>
-                  <MenuItem value={30}>Thirty</MenuItem>
+                  {carrierInfo.map((obj) => {
+                    const { carrier } = obj
+                    return <MenuItem value={carrier}>{carrier}</MenuItem>
+                  })}
                 </Select>
               </FormControl>
             </Grid>
@@ -85,11 +91,24 @@ const CreateStampForm = () => {
                   labelId="carrier-select-label"
                   id="carrier-select"
                   label="Package Type"
-                  value={10}
+                  value={formData.packageType}
+                  onChange={(e) =>
+                    setFormData({ ...formData, packageType: e.target.value })
+                  }
                 >
-                  <MenuItem value={10}>Ten</MenuItem>
-                  <MenuItem value={20}>Twenty</MenuItem>
-                  <MenuItem value={30}>Thirty</MenuItem>
+                  <MenuItem value={"custom"}>Custom Box/Package/Parcel</MenuItem>
+                  {formData.carrier === "USPS"
+                    ? carrierInfo[0].packages.map((obj) => {
+                        const { name, value } = obj
+                        return <MenuItem value={value}>{name}</MenuItem>
+                      })
+                    : null}
+                  {formData.carrier === "UPS"
+                    ? carrierInfo[1].packages.map((obj) => {
+                        const { name, value } = obj
+                        return <MenuItem value={value}>{name}</MenuItem>
+                      })
+                    : null}
                 </Select>
               </FormControl>
             </Grid>
@@ -109,6 +128,7 @@ const CreateStampForm = () => {
                 label="Length"
                 variant="outlined"
                 value={formData.packageLength}
+                disabled={formData.packageType !== "custom" && true}
                 onChange={(e) =>
                   setFormData({ ...formData, packageLength: e.target.value })
                 }
@@ -121,6 +141,7 @@ const CreateStampForm = () => {
                 label="Width"
                 variant="outlined"
                 value={formData.packageWidth}
+                disabled={formData.packageType !== "custom" && true}
                 onChange={(e) =>
                   setFormData({ ...formData, packageWidth: e.target.value })
                 }
@@ -133,6 +154,7 @@ const CreateStampForm = () => {
                 label="Height"
                 variant="outlined"
                 value={formData.packageHeight}
+                disabled={formData.packageType !== "custom" && true}
                 onChange={(e) =>
                   setFormData({ ...formData, packageHeight: e.target.value })
                 }
@@ -147,7 +169,6 @@ const CreateStampForm = () => {
                   endAdornment: <InputAdornment position="end">lb</InputAdornment>,
                 }}
                 variant="outlined"
-                type="number"
                 value={formData.packageWeightPounds}
                 onChange={(e) =>
                   setFormData({ ...formData, packageWeightPounds: e.target.value })
@@ -160,7 +181,6 @@ const CreateStampForm = () => {
                 id="ounces"
                 label="Ounces"
                 variant="outlined"
-                type="number"
                 value={formData.packageWeightOunces}
                 InputProps={{
                   endAdornment: <InputAdornment position="end">oz</InputAdornment>,

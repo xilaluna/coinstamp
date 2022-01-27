@@ -3,8 +3,10 @@ import easypost from "../config/easypost.js"
 
 export const getOrder = async (req, res) => {
   try {
-    const order = req.session.order
-    res.status(200).json(order)
+    if (!req.session.order) {
+      req.session.order = []
+    }
+    res.status(200).json(req.session.order)
   } catch (error) {
     res.status(400).json({ message: error.message })
   }

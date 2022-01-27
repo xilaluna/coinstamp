@@ -10,7 +10,16 @@ import Cart from "./pages/Cart/Cart"
 import Order from "./pages/Order/Order"
 import Create from "./pages/Create/Create"
 
+import { useSelector } from "react-redux"
+import { useDispatch } from "react-redux"
+import { getCart } from "./redux/slices/cartSlice"
+
 const App = () => {
+  const cart = useSelector((state) => state.cart)
+  const dispatch = useDispatch()
+  if (cart.status === "idle") {
+    dispatch(getCart())
+  }
   return (
     <React.Fragment>
       <Navbar />

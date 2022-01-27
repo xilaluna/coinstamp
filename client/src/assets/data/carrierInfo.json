@@ -1,0 +1,47 @@
+[
+  {
+    "carrier": "USPS",
+    "packages": [
+      { "name": "Card", "value": "Card" },
+      { "name": "Letter", "value": "Letter" },
+      { "name": "Flat", "value": "Flat" },
+      { "name": "Flat Rate Envelope", "value": "FlatRateEnvelope" },
+      { "name": "Flat Rate Legal Envelope", "value": "FlatRateLegalEnvelope" },
+      { "name": "Flat Rate Padded Envelope", "value": "FlatRatePaddedEnvelope" },
+      { "name": "Flat Rate Gift Card Envelope", "value": "FlatRateGiftCardEnvelope" },
+      { "name": "Flat Rate Window Envelope", "value": "FlatRateWindowEnvelope" },
+      { "name": "Flat Rate Cardboard Envelope", "value": "FlatRateCardboardEnvelope" },
+      { "name": "Small Flat Rate Envelope", "value": "SmallFlatRateEnvelope" },
+      { "name": "Parcel", "value": "Parcel" },
+      { "name": "Large Parcel", "value": "LargeParcel" },
+      { "name": "Irregular Parcel", "value": "IrregularParcel" },
+      { "name": "Soft Pack", "value": "SoftPack" },
+      { "name": "Small Flat Rate Box", "value": "SmallFlatRateBox" },
+      { "name": "Medium Flat Rate Box", "value": "MediumFlatRateBox" },
+      { "name": "Large Flat Rate Box", "value": "LargeFlatRateBox" },
+      { "name": "Large Flat Rate Box APOFPO", "value": "LargeFlatRateBoxAPOFPO" },
+      { "name": "Large Flat Rate Board Game Box", "value": "LargeFlatRateBoardGameBox" },
+      { "name": "Regional Rate Box A", "value": "RegionalRateBoxA" },
+      { "name": "Regional Rate Box B", "value": "RegionalRateBoxB" },
+      { "name": "Flat Tub Tray Box", "value": "FlatTubTrayBox" },
+      { "name": "EMM Tray Box", "value": "EMMTrayBox" },
+      { "name": "Full Tray Box", "value": "FullTrayBox" },
+      { "name": "Half Tray Box", "value": "HalfTrayBox" },
+      { "name": "PMOD Sack", "value": "PMODSack" }
+    ]
+  },
+  {
+    "carrier": "UPS",
+    "packages": [
+      { "name": "UPS Letter", "value": "UPSLetter" },
+      { "name": "UPS Express Box", "value": "UPSExpressBox" },
+      { "name": "UPS 25kg Box", "value": "UPS25kgBox" },
+      { "name": "UPS 10kg Box", "value": "UPS10kgBox" },
+      { "name": "Tube", "value": "Tube" },
+      { "name": "Pak", "value": "Pak" },
+      { "name": "Small Express Box", "value": "SmallExpressBox" },
+      { "name": "Medium Express Box", "value": "MediumExpressBox" },
+      { "name": "Large Express Box", "value": "LargeExpressBox" }
+    ]
+  }
+]

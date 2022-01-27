@@ -12,7 +12,11 @@ import Button from "@mui/material/Button"
 import Badge from "@mui/material/Badge"
 import Container from "@mui/material/Container"
 
+import { useSelector } from "react-redux"
+
 const Navbar = () => {
+  const { cart } = useSelector((state) => state.cart)
+
   return (
     <AppBar position="relative" sx={{ mb: 4 }}>
       <Container maxWidth="lg">
@@ -34,7 +38,7 @@ const Navbar = () => {
           </Button>
 
           <IconButton component={RouterLink} to="/cart" size="large" color="inherit">
-            <Badge badgeContent={0} color="error">
+            <Badge badgeContent={cart.length} color="error">
               <ShoppingCart />
             </Badge>
           </IconButton>
