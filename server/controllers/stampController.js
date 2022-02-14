@@ -44,6 +44,7 @@ export const createStamp = async (req, res) => {
           parseFloat(stamp.packageWeightOunces) +
           parseFloat(stamp.packageWeightPounds) * 16,
       }),
+      carrier_accounts: [stamp.carrier],
     })
 
     const response = await shipment.save()
