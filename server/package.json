@@ -7,9 +7,7 @@
   "scripts": {
     "start": "node server.js",
     "dev": "nodemon server.js",
-    "build": "cd ./client && npm run build",
-    "install-client": "cd ./client && npm install",
-    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"
+    "build": "cd ./client && npm run build"
   },
   "repository": {
     "type": "git",
@@ -24,10 +22,13 @@
   "dependencies": {
     "@easypost/api": "^4.0.0",
     "coinbase-commerce-node": "^1.0.4",
+    "connect-redis": "^6.0.0",
     "cors": "^2.8.5",
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
-    "joi": "^17.4.2"
+    "express-session": "^1.17.2",
+    "joi": "^17.4.2",
+    "redis": "^4.0.2"
   },
   "devDependencies": {
     "nodemon": "^2.0.13"

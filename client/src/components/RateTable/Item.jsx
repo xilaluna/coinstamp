@@ -5,24 +5,17 @@ import Button from "@mui/material/Button"
 import AddCircleIcon from "@mui/icons-material/AddCircle"
 
 import { useNavigate } from "react-router-dom"
+
 import { useDispatch } from "react-redux"
 import { addToCart } from "../../redux/slices/cartSlice"
-import { useSelector } from "react-redux"
 
 const Item = (props) => {
   const { id, carrier, service, delivery_days, rate } = props
-  const stamp = useSelector((state) => state.stamp)
   const navigate = useNavigate()
   const dispatch = useDispatch()
 
-  const handleClick = async () => {
-    await dispatch(
-      addToCart({
-        shipment: stamp.shipment,
-        addresses: stamp.addresses,
-        rate: { id: id, rate: rate, carrier: carrier, service: service },
-      })
-    )
+  const handleClick = () => {
+    dispatch(addToCart(id))
     navigate("/cart")
   }
 

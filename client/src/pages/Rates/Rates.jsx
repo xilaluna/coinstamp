@@ -1,4 +1,4 @@
-import React, { useEffect } from "react"
+import React from "react"
 
 import Grid from "@mui/material/Grid"
 import Paper from "@mui/material/Paper"
@@ -7,37 +7,34 @@ import Container from "@mui/material/Container"
 import RateTable from "../../components/RateTable/RateTable"
 import LabelSummary from "../../components/LabelSummary/LabelSummary"
 
-import { useDispatch } from "react-redux"
-import { getAddresses } from "../../redux/slices/stampSlice"
 import { useSelector } from "react-redux"
+import { useDispatch } from "react-redux"
+import { getStamp } from "../../redux/slices/stampSlice"
 
 const PaperStyles = {
   p: 4,
 }
 
 const Rates = () => {
-  const shipment = useSelector((state) => state.stamp.shipment)
+  const { stamp, status } = useSelector((state) => state.stamp)
   const dispatch = useDispatch()
-
-  useEffect(() => {
-    dispatch(
-      getAddresses({
-        to_address: shipment.to_address.id,
-        from_address: shipment.from_address.id,
-      })
-    )
-  }, [shipment.from_address, shipment.to_address, dispatch])
+  if (status === "idle") {
+    dispatch(getStamp())
+  }
   return (
     <Container maxWidth="md">
       <Grid container spacing={4}>
         <Grid item xs={12}>
           <Paper sx={PaperStyles}>
-            <LabelSummary />
+            <LabelSummary
+              to_address={stamp.to_address}
+              from_address={stamp.from_address}
+            />
           </Paper>
         </Grid>
         <Grid item xs={12}>
           <Paper sx={PaperStyles}>
-            <RateTable />
+            <RateTable rates={stamp.rates} />
           </Paper>
         </Grid>
       </Grid>

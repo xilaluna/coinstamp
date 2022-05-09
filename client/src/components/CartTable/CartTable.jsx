@@ -6,24 +6,10 @@ import Table from "@mui/material/Table"
 import TableBody from "@mui/material/TableBody"
 
 import Item from "./Item"
-import { useSelector } from "react-redux"
 
-const CartTable = () => {
-  const cart = useSelector((state) => state.cart.cart)
-  const items = cart.map((obj) => {
-    const { shipment, addresses, rate } = obj
-    return (
-      <Item
-        key={`${shipment.id}-${addresses.from_address.name}`}
-        id={shipment.id}
-        carrier={rate.carrier}
-        service={rate.service}
-        fromName={addresses.from_address.name}
-        toName={addresses.to_address.name}
-        rate={rate.rate}
-      />
-    )
-  })
+const CartTable = (props) => {
+  const { cart } = props
+
   return (
     <React.Fragment>
       <Typography variant="h5" gutterBottom>
@@ -32,7 +18,22 @@ const CartTable = () => {
       <TableContainer>
         {cart.length > 0 ? (
           <Table>
-            <TableBody>{items}</TableBody>
+            <TableBody>
+              {cart.map((obj) => {
+                const { id, rates, to_address, from_address } = obj
+                return (
+                  <Item
+                    key={`${id}-${from_address.name}`}
+                    id={id}
+                    carrier={rates[0].carrier}
+                    service={rates[0].service}
+                    fromName={from_address.name}
+                    toName={to_address.name}
+                    rate={rates[0].rate}
+                  />
+                )
+              })}
+            </TableBody>
           </Table>
         ) : (
           <Typography>No items in cart</Typography>

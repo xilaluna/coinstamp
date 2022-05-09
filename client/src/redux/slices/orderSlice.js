@@ -1,8 +1,8 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit"
 import axios from "axios"
 
-export const checkoutCart = createAsyncThunk("order/checkoutCart", async (newOrder) => {
-  const response = await axios.post("/stamp/checkout", newOrder)
+export const getOrder = createAsyncThunk("order/getOrder", async () => {
+  const response = await axios.get("/order")
   return response.data
 })
 
@@ -10,13 +10,18 @@ export const orderSlice = createSlice({
   name: "order",
   initialState: {
     order: [],
-    checkoutUrl: null,
+    status: "idle",
   },
-  reducers: {},
   extraReducers: {
-    [checkoutCart.fulfilled]: (state, action) => {
-      state.checkoutUrl = action.payload.hosted_url
-      window.location.replace(action.payload.hosted_url)
+    [getOrder.pending]: (state) => {
+      state.status = "loading"
+    },
+    [getOrder.fulfilled]: (state, action) => {
+      state.status = "succeeded"
+      state.order = action.payload
+    },
+    [getOrder.rejected]: (state) => {
+      state.status = "failed"
     },
   },
 })
