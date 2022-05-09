@@ -1,5 +1,12 @@
 import easypost from "../config/easypost.js"
 
+const convertWeightStringToFloat = (weight) => {
+  if (weight === "" || weight === undefined) {
+    return parseFloat(0)
+  }
+  return parseFloat(weight)
+}
+
 export const getStamp = async (req, res) => {
   try {
     const stamp = req.session.stamp
@@ -12,6 +19,11 @@ export const getStamp = async (req, res) => {
 export const createStamp = async (req, res) => {
   const stamp = req.body
   try {
+    let ounces = convertWeightStringToFloat(stamp.packageWeightOunces)
+    console.log(ounces)
+    let pounds = convertWeightStringToFloat(stamp.packageWeightPounds)
+    console.log(pounds)
+
     const shipment = await new easypost.Shipment({
       to_address: await new easypost.Address({
         verify: ["true"],
@@ -40,11 +52,8 @@ export const createStamp = async (req, res) => {
         length: parseFloat(stamp.packageLength),
         width: parseFloat(stamp.packageWidth),
         height: parseFloat(stamp.packageHeight),
-        weight:
-          parseFloat(stamp.packageWeightOunces) +
-          parseFloat(stamp.packageWeightPounds) * 16,
+        weight: ounces + pounds * 16,
       }),
-      carrier_accounts: [stamp.carrier],
     })
 
     const response = await shipment.save()
@@ -64,6 +73,7 @@ export const createStamp = async (req, res) => {
 
     res.status(201).json(fullStamp)
   } catch (error) {
+    console.log(error)
     res.status(409).json({ message: error.message })
   }
 }
