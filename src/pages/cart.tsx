@@ -1,10 +1,16 @@
 import type { NextPage } from "next";
+import Head from "next/head";
 
 const Cart: NextPage = () => {
   return (
-    <div>
-      <h1>Cart</h1>
-    </div>
+    <>
+      <Head>
+        <title>Cart - CoinStamp</title>
+      </Head>
+      <main>
+        <h1>Cart</h1>
+      </main>
+    </>
   );
 };
 
