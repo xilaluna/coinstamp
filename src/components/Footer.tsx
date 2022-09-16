@@ -1,6 +1,4 @@
-import React from "react";
-
-const Copyright = () => {
+const Copyright: React.FC = () => {
   return (
     <p className="text-center ">
       {"Copyright © "}
@@ -10,9 +8,9 @@ const Copyright = () => {
   );
 };
 
-const Footer = () => {
+const Footer: React.FC = () => {
   return (
-    <footer className="page-container mt-auto bg-gray-300 py-5">
+    <footer className="container-page border-color mt-auto border-t py-5">
       <Copyright />
     </footer>
   );

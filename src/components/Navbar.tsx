@@ -1,34 +1,24 @@
 import Link from "next/link";
 
-const Navbar = () => {
+const Navbar: React.FC = () => {
   return (
-    <header className="page-container border-color flex flex-row border-b py-5">
+    <header className="container-page border-color flex flex-row border-b py-5 text-lg">
       <Link href={"/"}>
-        <a>CoinStamp</a>
+        <a className="hover:text-blue-600">CoinStamp</a>
       </Link>
-      <nav className="ml-auto">
-        <ul className="flex space-x-5">
-          <li>
-            <Link href={"/new"}>
-              <a>New Stamp</a>
-            </Link>
-          </li>
-          <li>
-            <Link href={"/rates"}>
-              <a>Rates</a>
-            </Link>
-          </li>
-          <li>
-            <Link href={"/cart"}>
-              <a>Cart</a>
-            </Link>
-          </li>
-          <li>
-            <Link href={"/order"}>
-              <a>Order</a>
-            </Link>
-          </li>
-        </ul>
+      <nav className="ml-auto flex space-x-5">
+        <Link href={"/create"}>
+          <a className="hover:text-blue-600">Create</a>
+        </Link>
+        <Link href={"/rates"}>
+          <a className="hover:text-blue-600">Rates</a>
+        </Link>
+        <Link href={"/cart"}>
+          <a className="hover:text-blue-600">Cart</a>
+        </Link>
+        <Link href={"/order"}>
+          <a className="hover:text-blue-600">Order</a>
+        </Link>
       </nav>
     </header>
   );
