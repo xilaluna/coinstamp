@@ -10,10 +10,12 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className="page-container flex min-h-[70vh] flex-col items-center justify-center space-y-5">
-        <h1 className="text-6xl font-bold">CoinStamp</h1>
-        <p>Use decentralized currencies to buy and print your postage.</p>
-        <div>
+      <main className="container-page flex min-h-[78vh] flex-col items-center justify-center space-y-5">
+        <h1 className="heading-color text-6xl font-bold">CoinStamp</h1>
+        <p className="text-lg">
+          Use decentralized currencies to buy and print your postage.
+        </p>
+        <div className="space-x-2">
           <button className="btn btn-primary">Get Started</button>
           <button className="btn btn-secondary">Read More</button>
         </div>
