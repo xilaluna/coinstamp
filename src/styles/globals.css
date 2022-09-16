@@ -12,4 +12,13 @@
   .page-container {
     @apply container mx-auto max-w-screen-lg px-4 sm:px-0;
   }
+  .btn {
+    @apply inline-block rounded-md px-4 py-2 font-medium;
+  }
+  .btn-primary {
+    @apply bg-blue-600 text-white hover:bg-blue-700;
+  }
+  .btn-secondary {
+    @apply bg-gray-200 text-gray-700 hover:bg-gray-300;
+  }
 }
