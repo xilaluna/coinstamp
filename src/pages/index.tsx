@@ -17,7 +17,6 @@ const Home: NextPage = () => {
         </p>
         <div className="space-x-2">
           <button className="btn btn-primary">Get Started</button>
-          <button className="btn btn-secondary">Read More</button>
         </div>
       </main>
     </>
