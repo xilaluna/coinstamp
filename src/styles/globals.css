@@ -4,14 +4,28 @@
 
 @layer base {
   body {
-    @apply bg-gray-50 text-gray-900;
+    @apply bg-white text-gray-600;
   }
 }
 
 @layer components {
-  .page-container {
+  .highlight {
+    @apply text-blue-600 hover:text-blue-700;
+  }
+  .heading-color {
+    @apply text-gray-900;
+  }
+  .border-color {
+    @apply border-gray-300;
+  }
+
+  .container-page {
     @apply container mx-auto max-w-screen-lg px-4 sm:px-0;
   }
+  .container-secondary {
+    @apply container-page space-y-10 py-20;
+  }
+
   .btn {
     @apply inline-block rounded-md px-4 py-2 font-medium;
   }
