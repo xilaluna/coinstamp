@@ -1,4 +1,9 @@
-const Heading = ({ title, subtitle }: { title: string; subtitle: string }) => {
+interface Props {
+  title: string;
+  subtitle: string;
+}
+
+const Heading: React.FC<Props> = ({ title, subtitle }) => {
   return (
     <div className="flex flex-col items-center justify-center space-y-2 sm:space-y-5">
       <h1 className="heading-color text-6xl font-bold">{title}</h1>
