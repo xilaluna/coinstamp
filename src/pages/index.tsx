@@ -1,4 +1,5 @@
 import type { NextPage } from "next";
+import Link from "next/link";
 import Head from "next/head";
 
 const Home: NextPage = () => {
@@ -16,7 +17,9 @@ const Home: NextPage = () => {
           Use decentralized currencies to buy and print your postage.
         </p>
         <div className="space-x-2">
-          <button className="btn btn-primary">Get Started</button>
+          <Link href={"/create"}>
+            <button className="btn btn-primary">Get Started</button>
+          </Link>
         </div>
       </main>
     </>
