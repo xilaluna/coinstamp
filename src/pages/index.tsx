@@ -1,6 +1,7 @@
 import type { NextPage } from "next";
 import Link from "next/link";
 import Head from "next/head";
+import Image from "next/image";
 
 const Home: NextPage = () => {
   return (
@@ -12,6 +13,7 @@ const Home: NextPage = () => {
       </Head>
 
       <main className="container-page flex min-h-[78vh] flex-col items-center justify-center space-y-5">
+        <Image src="/logo.svg" alt="logo image" width={100} height={100} />
         <h1 className="heading-color text-6xl font-bold">CoinStamp</h1>
         <p className="text-lg">
           Use decentralized currencies to buy and print your postage.
