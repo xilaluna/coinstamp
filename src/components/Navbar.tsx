@@ -1,24 +1,26 @@
+import Image from "next/image";
 import Link from "next/link";
 
 const Navbar: React.FC = () => {
   return (
-    <header className="sticky top-0 z-10 backdrop-blur-md">
-      <div className="container-page border-color flex flex-row border-b py-5 text-lg">
+    <header className="border-color sticky top-0 z-10 border-b backdrop-blur-md">
+      <div className="container-page flex flex-row py-5 text-lg">
+        <Image src="/logo.svg" alt="logo nav" width={28} height={28} />
         <Link href={"/"}>
-          <a className="hover:text-blue-600">CoinStamp</a>
+          <a className="pl-2 font-bold hover:text-indigo-500">CoinStamp</a>
         </Link>
         <nav className="ml-auto flex space-x-5">
           <Link href={"/create"}>
-            <a className="hover:text-blue-600">Create</a>
+            <a className="hover:text-indigo-500">Create</a>
           </Link>
           <Link href={"/rates"}>
-            <a className="hover:text-blue-600">Rates</a>
+            <a className="hover:text-indigo-500">Rates</a>
           </Link>
           <Link href={"/cart"}>
-            <a className="hover:text-blue-600">Cart</a>
+            <a className="hover:text-indigo-500">Cart</a>
           </Link>
           <Link href={"/order"}>
-            <a className="hover:text-blue-600">Order</a>
+            <a className="hover:text-indigo-500">Order</a>
           </Link>
         </nav>
       </div>

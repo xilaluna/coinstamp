@@ -10,7 +10,7 @@ const Copyright: React.FC = () => {
 
 const Footer: React.FC = () => {
   return (
-    <footer className="container-page border-color mt-auto border-t py-5">
+    <footer className="border-color mt-auto border-t py-5">
       <Copyright />
     </footer>
   );
