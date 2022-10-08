@@ -1,12 +1,12 @@
 import type { NextPage } from "next";
 import Layout from "@/components/Layout";
 
-const Cart: NextPage = () => {
+const Rates: NextPage = () => {
   return (
     <Layout>
-      <div>Cart</div>
+      <div>Rates</div>
     </Layout>
   );
 };
 
-export default Cart;
+export default Rates;
