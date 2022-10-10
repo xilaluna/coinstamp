@@ -1,3 +1,18 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-zinc-900 text-zinc-50;
+  }
+}
+
+@layer components {
+  .border-color {
+    @apply border-zinc-700;
+  }
+  .page-width {
+    @apply container mx-auto max-w-screen-lg px-4 sm:px-0;
+  }
+}
