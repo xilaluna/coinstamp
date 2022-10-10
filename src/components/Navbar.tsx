@@ -5,7 +5,7 @@ const Navbar: React.FC = () => {
     <header className="border-color sticky top-0 z-10 border-b backdrop-blur-md">
       <div className="page-width flex flex-row py-5">
         <Link href={"/"}>
-          <a className="pl-2 hover:text-indigo-500">CoinStamp</a>
+          <a className="hover:text-indigo-500">CoinStamp</a>
         </Link>
         <nav className="ml-auto flex space-x-5">
           <Link href={"/create"}>

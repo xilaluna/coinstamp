@@ -3,7 +3,7 @@ import Layout from "@/components/Layout";
 
 const Cart: NextPage = () => {
   return (
-    <Layout>
+    <Layout heading="Cart" description="Your Cart">
       <div>Cart</div>
     </Layout>
   );

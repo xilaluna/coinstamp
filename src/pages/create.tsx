@@ -3,7 +3,7 @@ import type { NextPage } from "next";
 
 const Create: NextPage = () => {
   return (
-    <Layout>
+    <Layout heading="Create" description="Create a new stamp">
       <div>Create</div>
     </Layout>
   );

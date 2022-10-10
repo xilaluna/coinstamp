@@ -3,7 +3,7 @@ import Layout from "@/components/Layout";
 
 const Order: NextPage = () => {
   return (
-    <Layout>
+    <Layout heading="Order" description="Your Order">
       <div>Order</div>
     </Layout>
   );

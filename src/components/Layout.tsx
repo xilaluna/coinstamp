@@ -1,17 +1,24 @@
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
-
 type LayoutProps = {
   children: React.ReactNode;
+  heading: string;
+  description: string;
+  className?: string;
 };
 
-const Layout: React.FC<LayoutProps> = ({ children }) => {
+const Layout: React.FC<LayoutProps> = ({
+  children,
+  heading,
+  description,
+  className,
+}) => {
   return (
-    <div className="flex min-h-screen flex-col">
-      <Navbar />
-      <main>{children}</main>
-      <Footer />
-    </div>
+    <main className={`${className} page-width space-y-10 py-20`}>
+      <section className="flex flex-col items-center justify-center space-y-5 ">
+        <h1 className="text-4xl">{heading}</h1>
+        <p>{description}</p>
+      </section>
+      {children}
+    </main>
   );
 };
 
