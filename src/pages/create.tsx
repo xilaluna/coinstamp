@@ -1,10 +1,11 @@
 import Layout from "@/components/Layout";
 import type { NextPage } from "next";
+import Button from "@/components/Button";
 
 const Create: NextPage = () => {
   return (
     <Layout heading="Create" description="Create a new stamp">
-      <section className="grid grid-cols-2 gap-10">
+      <form className="grid grid-cols-2 gap-10">
         <div className="border-color col-span-2 rounded-md border p-5 ">
           <h2 className="heading-color pb-5 text-xl">Carrier Information</h2>
           <div className="grid grid-cols-2 gap-5">
@@ -59,9 +60,10 @@ const Create: NextPage = () => {
           <div className="grid gap-5">
             <TextInput label="Country" />
             <TextInput label="Name" />
+            <Button type="submit">Submit</Button>
           </div>
         </div>
-      </section>
+      </form>
     </Layout>
   );
 };
