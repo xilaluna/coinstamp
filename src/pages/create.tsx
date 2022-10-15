@@ -5,7 +5,11 @@ import Button from "@/components/Button";
 const Create: NextPage = () => {
   return (
     <Layout heading="Create" description="Create a new stamp">
-      <form className="grid grid-cols-2 gap-10">
+      <form
+        action="/api/stamp"
+        method="post"
+        className="grid grid-cols-2 gap-10"
+      >
         <div className="border-color col-span-2 rounded-md border p-5 ">
           <h2 className="heading-color pb-5 text-xl">Carrier Information</h2>
           <div className="grid grid-cols-2 gap-5">
